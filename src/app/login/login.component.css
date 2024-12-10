@@ -1,0 +1,30 @@
+
+
+
+
+
+.AuthenticationBody {
+    background: url(/assets/images/LoginImg.21208f2f.jpg) no-repeat;
+    background-position: top;
+    background-size: cover;
+    padding: .5rem !important;
+    border-radius: 1.6rem;
+    width: 90%;
+    height: auto;
+}
+
+
+button {
+    box-shadow: 0 6px 12px -2px rgba(50, 50, 93, .25), 0 3px 7px -3px rgba(0, 0, 0, .3) !important;
+}
+
+
+@media (max-width: 768px) {
+
+    .paddingdiv{
+        padding: 0px !important;
+        padding-top: 15px !important;
+    }
+}
+
+

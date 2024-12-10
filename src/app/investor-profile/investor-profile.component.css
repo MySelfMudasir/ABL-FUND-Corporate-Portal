@@ -1,0 +1,253 @@
+.main-content {
+    padding: 40px;
+}
+
+.card {
+    border: none !important;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 20px;
+}
+
+.custom-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header
+ {
+    padding-top: 50px;
+ }
+.card-body
+ {
+    padding-bottom: 20px;
+ }
+ 
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #003366; /* Dark blue color */
+    margin-bottom: 15px;
+}
+
+.cis-text {
+    color: #f06a25; /* Orange color for CIS */
+}
+
+.dotted-listing {
+	padding: 0;
+	width: 100%;
+	margin: 1rem 0 0;
+	list-style: none;
+}
+
+.dotted-listing li {
+	border-bottom: 1px dashed #4b4b4b;
+	display: flex;
+	justify-content: space-between;
+	color: #000;
+	padding-top: 2.5rem;
+}
+
+.legend-list {
+	display: flex;
+	justify-content: space-around;
+}
+
+.legend-list div {
+	display: flex;
+	position: relative;
+	padding-left: 30px;
+	justify-content: center;
+	align-items: center;
+	margin-right: 0;
+	color: #000;
+}
+
+
+.legend-list div.blue-legend:before {
+	background: #22417f;
+	border-radius: 4px;
+}
+
+.legend-list div:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	background-color: #003366;
+	width: 24px;
+	height: 24px;
+	font-weight: 400 !important;
+}
+
+.legend-list div a {
+	color: #000;
+	font-family: sans-serif;
+}
+
+.legend-list div.orange-legend:before 
+{
+	background: #f06a25;
+	border-radius: 4px;
+}
+
+.legend-list div:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	background-color: #4b4b4b;
+	width: 24px;
+	height: 24px;
+	font-weight: 400 !important;
+}
+
+
+.card {
+    border: 1.3px solid #000;
+    border-radius: 20px;
+    width: 90%;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #003366; /* Dark blue color */
+    margin-bottom: 15px;
+}
+
+.cis-text {
+    color: #f06a25; /* Orange color for CIS */
+}
+
+
+
+.cis {
+    background-color: #22417f;
+    color: white;
+    border-radius: 12px 0px 0px 12px;
+    padding: 6px 12px;
+    font-weight: bold;
+    border: none;
+}
+
+.vps {
+    background-color: #f06a25;
+    color: #fff9;
+    border-radius: 0 12px 12px 0;
+    padding: 6px 12px;
+    font-weight: bold;
+    border: none;
+}
+
+
+
+.currency-badge {
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #22417f; /* Dark blue for PKR */
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-weight: 1000 !important;
+}
+
+.investment-value-label {
+    font-size: 17px;
+    color: #f06a25; /* Orange color for label */
+    font-weight: bold;
+}
+
+.investment-value-amount {
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+.img-fluid {
+    max-width: 250px; /* Limit the chart size */
+    height: auto;
+}
+
+.btn-orange {
+    background-color: #f06a25;
+    width: 100%;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 13px;
+    font-size: 16px;
+}
+
+.btn-orange:hover {
+    background-color: #e55a20;
+}
+
+
+.input-listing, .input-listing ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	height: 100%;
+	width: 100%;
+}
+.input-listing li {
+	background-color: #f4f3f1;
+	border: 1px solid #d3d3d2;
+	padding: 1rem;
+	margin-bottom: 2rem;
+	list-style: none;
+}
+.custom {
+	margin-bottom: 0;
+}
+.custom.radio>label {
+	position: relative;
+	cursor: pointer;
+	padding-left: 32px;
+}
+
+.btn-blue {
+    background-color: #22417f;
+    width: 100%;
+    color: white;
+    border: none;
+    padding: 23px 20px;
+    border-radius: 13px;
+    font-size: 16px;
+}
+
+.btn-blue:hover {
+    background-color: #1f335c;
+}
+
+.form-check-input:checked {
+    background-color: #f06a25;
+    border-color: #f06a25;
+    box-shadow: 0 2px 6px 0 rgba(240, 106, 37, .3); /* Shadow color matches the background color */
+}
+
+.table-head-title{
+    font-size: 23px;
+    font-weight: bold;
+    color: #003366; /* Dark blue color */
+    margin-bottom: 15px;
+}
+
+
+@media (max-width: 768px) {
+    .card
+    {
+        width: 100% !important;
+    }
+    .col-btn-group
+    {
+        padding: 0px !important;
+        margin-top: 20px !important;
+    }
+    .div-form-label-account
+    {
+        display: flex;
+        justify-content: start !important;
+    }
+}

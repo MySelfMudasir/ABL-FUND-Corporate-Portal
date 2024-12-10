@@ -1,0 +1,69 @@
+<section class="" style="background: #fff; height: auto;">
+
+
+    <app-header></app-header>
+
+
+
+    <main class="">
+        <div class="d-flex align-items-center justify-content-center h-100 paddingdiv" style="padding: 15px;">
+
+            <div class="AuthenticationBody">
+                <div class="row justify-content-lg-end">
+                    <div class="col-lg-6">
+                        <div class="card" style="border-radius: 25px;">
+                            <div class="card-body">
+                                <div class="AuthenticationForm">
+                                    <form class="row justify-content-center needs-validation&quot; novalidate" [formGroup]="login">
+                                        <h4 class="my-3 text-center fw-bold" style="color: rgb(34, 65, 127); font-family: sans-serif; font-size: 20px;">Corporate
+                                            Login
+                                        </h4>
+                                        <div class="formgroup col-lg-8 col-10">
+                                            <div class="form-label-parent">
+                                                <label class="form-label" style="padding-left: 8px;">User</label>
+                                                    <span style="color: red;"> *</span>
+                                            </div>
+                                            <div class="password-input-container">
+                                                <input placeholder="" class="form-control mb-2"
+                                                    type="text" value="" name="userid" formControlName="userid" required="" />
+                                            </div>
+                                        </div>
+                                        <div class="formgroup col-lg-8 col-10">
+                                            <div class="form-password-toggle">
+                                                <label class="form-label" style="padding-left: 8px;">Password</label>
+                                                <span style="color: red;"> *</span>
+                                                <div class="input-group input-group-merge">
+                                                    <input [type]="isCurrentPasswordVisible ? 'text' : 'password'" class="form-control" id="basic-default-password32" 
+                                                    placeholder="" aria-describedby="basic-default-password" name="userpwd" formControlName="userpwd" required="" />
+                                                    <span class="input-group-text cursor-pointer"
+                                                        (click)="toggleCurrentPasswordVisibility()" id="basic-default-password">
+                                                        <i [class]="isCurrentPasswordVisible ? 'ti ti-eye' : 'ti ti-eye-off'"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- <div class="formgroup gap-2 pt-3 d-grid justify-content-end col-lg-8 col-11">
+                                            <a class="" href="/forgetpassword"
+                                                style="width: fit-content; color: #22417f">
+                                                Forgot Password</a>
+                                        </div> -->
+                                        <div class="formgroup d-grid gap-2  my-3 col-lg-6 col-8">
+                                            <button type="submit" class="btn text-white py-3"
+                                                style="background: #f06a25; border-radius: 10px;" (click)="onSubmit()">LOGIN</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+
+</section>
