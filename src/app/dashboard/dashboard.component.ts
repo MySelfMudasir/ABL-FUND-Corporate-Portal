@@ -256,7 +256,6 @@ export class DashboardComponent {
     
     this.apiService.GetTransactionDetail(portfolioSummaryPayload, headers).subscribe(
       (response: any) => {
-        console.clear();
         console.log('GetTransactionDetail Response:', response);
         if (response) {
           this.transactionDetail = [];
