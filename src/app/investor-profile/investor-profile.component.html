@@ -1,0 +1,238 @@
+<section class="" style="background: #fff; height:auto;">
+
+
+
+    <app-header-2></app-header-2>
+
+
+
+    <main class="">
+
+
+        <div class="mt-1 mt-lg-3 container-fluid p-0">
+            <div class="row m-0">
+                <div class="blue-header" style="height: 35px; background-color: #22417f;">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row m-0">
+            <div class="col-md-3 ps-0">
+                <!-- Sidebar -->
+                <app-sidebar></app-sidebar>
+                <!-- Sidebar -->
+            </div>
+            <div class="col-md-9">
+                <div class="main-content">
+                    <div class="row" style="padding-bottom: 30px;">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-2 col-12 d-flex align-items-center justify-content-end div-form-label-account">
+                            <label class="form-label" style="color: #22417f; font-size: 14px;">Account
+                                #: </label>
+                        </div>
+                        <div class="col-md-2 col-12 p-0">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>25169</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 col-12 d-flex align-items-center col-btn-group">
+                            <div class="w-100 btn-group">
+                                <button class="btn cis">CIS</button>
+                                <button class="btn vps">VPS</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6 p-0 my-5">
+                            <div class="card custom-card" style="background-color: #F3F4F8;">
+                                <div class="card-header">
+                                    <button class="btn btn-blue w-100 d-flex justify-content-between align-items-center"
+                                        type="button" data-bs-toggle="collapse" data-bs-target="#collapseBasicInfo"
+                                        aria-expanded="false" aria-controls="collapseExample" (click)="onChangeIcon()">
+                                        <span>Basic Information</span>
+                                        <i class="fa" [ngClass]="{'fa-plus': isIconPlus, 'fa-minus': !isIconPlus}"
+                                            aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="collapse multi-collapse show" id="collapseBasicInfo">
+                                        <div class="flex-column row">
+                                            <div class="mb-3 col"><label class="form-label">Name:</label><input
+                                                    placeholder="" class="form-control mb-2 bg-white" required=""
+                                                    disabled="" autocomplete="off" type="text"
+                                                    value="MR SYED ADNAN MUATTAR">
+                                                <div class="invalid-feedback">error msg</div>
+                                            </div>
+                                            <div class="mb-3 col"><label class="form-label">Father/Husband
+                                                    Name:</label><input placeholder=""
+                                                    class="form-control mb-2 bg-white" required="" disabled=""
+                                                    autocomplete="off" type="text" value="SYED MUATTAR HUSSAIN ZAIDI">
+                                                <div class="invalid-feedback">error msg</div>
+                                            </div>
+                                            <div class="mb-3 col"><label class="form-label">CNIC:</label><input
+                                                    placeholder="" class="form-control mb-2 bg-white" required=""
+                                                    disabled="" autocomplete="off" type="text" value="42101-9354812-3">
+                                                <div class="invalid-feedback">error msg</div>
+                                            </div>
+                                            <div class="mb-3 col"><label class="form-label">Expiry
+                                                    Date:</label><input placeholder=""
+                                                    class="form-control mb-2 bg-white" pattern="YYYY-MM-DD" required=""
+                                                    disabled="" autocomplete="off" type="text" value="18-11-2024">
+                                                <div class="invalid-feedback">error msg</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 p-0 my-5">
+                            <div class="card custom-card border border-danger" style="background-color: #F3F4F8;">
+                                <div class="card-header">
+                                    <button class="btn btn-blue w-100 d-flex justify-content-between align-items-center"
+                                        type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseAccountInformation" aria-expanded="false"
+                                        aria-controls="collapseExample" (click)="onChangeIcon()">
+                                        <span>Account Information</span>
+                                        <i class="fa" [ngClass]="{'fa-plus': isIconPlus, 'fa-minus': !isIconPlus}"
+                                            aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="collapse multi-collapse show" id="collapseAccountInformation">
+                                        <div class="flex-column row">
+                                            <div class="mb-3 col"><label class="form-label">Zakat Status:</label><input
+                                                    placeholder="" class="form-control mb-2 bg-white" required=""
+                                                    disabled="" autocomplete="off" type="text" value="EXEMPT">
+                                                <div class="invalid-feedback">error msg</div>
+                                            </div>
+                                            <div class="mb-3 col"><label class="form-label">WHT%:</label><input
+                                                    placeholder="" class="form-control mb-2 bg-white" required=""
+                                                    disabled="" autocomplete="off" type="text" value="25">
+                                                <div class="invalid-feedback">error msg</div>
+                                            </div>
+                                            <div class="mb-3 col"><label class="form-label">Account Type:</label><input
+                                                    placeholder="" class="form-control mb-2 bg-white" required=""
+                                                    disabled="" autocomplete="off" type="text" value="SARMAYAKARI">
+                                                <div class="invalid-feedback">error msg</div>
+                                            </div>
+                                            <div class="mb-3 col"><label class="form-label">Authorization:</label><input
+                                                    placeholder="" class="form-control mb-2 bg-white" required=""
+                                                    disabled="" autocomplete="off" type="text" value="First applicant">
+                                                <div class="invalid-feedback">error msg</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 p-0 my-5">
+                            <div class="card custom-card border border-danger" style="background-color: #F3F4F8;">
+                                <div class="card-header">
+                                    <button class="btn btn-blue w-100 d-flex justify-content-between align-items-center"
+                                        type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseContactInformation" aria-expanded="false"
+                                        aria-controls="collapseExample" (click)="onChangeIcon()">
+                                        <span>Contact Information</span>
+                                        <i class="fa" [ngClass]="{'fa-plus': isIconPlus, 'fa-minus': !isIconPlus}"
+                                            aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="collapse multi-collapse show" id="collapseContactInformation">
+                                        <div class="flex-column row">
+                                            <div class="mb-3 col"><label class="form-label">Phone No:</label><input
+                                                    placeholder="" class="form-control mb-2 bg-white" required=""
+                                                    disabled="" autocomplete="off" type="text" value="1">
+                                                <div class="invalid-feedback">error msg</div>
+                                            </div>
+                                            <div class="mb-3 col"><label class="form-label">Mobile No:</label><input
+                                                    placeholder="" class="form-control mb-2 bg-white" required=""
+                                                    disabled="" autocomplete="off" type="text" value="03328331899">
+                                                <div class="invalid-feedback">error msg</div>
+                                            </div>
+                                            <div class="mb-3 col"><label class="form-label">Email Address:</label><input
+                                                    placeholder="" class="form-control mb-2 bg-white" required=""
+                                                    disabled="" autocomplete="off" type="text"
+                                                    value="muhammad.musa@ablfunds.com">
+                                                <div class="invalid-feedback">error msg</div>
+                                            </div>
+                                            <div class="mb-3 col"><label class="form-label">Address:</label><input
+                                                    placeholder="" class="form-control mb-2 bg-white" required=""
+                                                    disabled="" autocomplete="off" type="text" value="HOUSE #R-530/19,
+                                            AL NOOR SOCIETY,SAMANABAD,
+                                            KARACHI.">
+                                                <div class="invalid-feedback">error msg</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 p-0 my-5">
+                            <div class="card custom-card border border-danger" style="background-color: #F3F4F8;">
+                                <div class="card-header">
+                                    <button class="btn btn-blue w-100 d-flex justify-content-between align-items-center"
+                                        type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseBankInformation" aria-expanded="false"
+                                        aria-controls="collapseExample" (click)="onChangeIcon()">
+                                        <span>Bank Information</span>
+                                        <i class="fa" [ngClass]="{'fa-plus': isIconPlus, 'fa-minus': !isIconPlus}"
+                                            aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="collapse multi-collapse show" id="collapseBankInformation">
+                                        <div class="flex-column row">
+                                            <div class="mb-3 col"><label class="form-label">Bank Name:</label><input
+                                                    placeholder="" class="form-control mb-2 bg-white" required=""
+                                                    disabled="" autocomplete="off" type="text" value="SMBL">
+                                                <div class="invalid-feedback">error msg</div>
+                                            </div>
+                                            <div class="mb-3 col"><label class="form-label">Bank Account
+                                                    Number:</label><input placeholder=""
+                                                    class="form-control mb-2 bg-white" required="" disabled=""
+                                                    autocomplete="off" type="text" value="PK37SUMB0239027140115992">
+                                                <div class="invalid-feedback">error msg</div>
+                                            </div>
+                                            <div class="mb-3 col"><label class="form-label">Bank Address:</label><input
+                                                    placeholder="" class="form-control mb-2 bg-white" required=""
+                                                    disabled="" autocomplete="off" type="text"
+                                                    value="JAMSHED QUARTERS (0109)">
+                                                <div class="invalid-feedback">error msg</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+
+
+    <!-- Footer2 (always visible) -->
+    <div class="row m-0">
+        <div class="col-12 p-0">
+        <app-footer2></app-footer2>
+        </div>
+    </div>
+    
+
+</section>

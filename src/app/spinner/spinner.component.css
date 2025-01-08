@@ -1,0 +1,80 @@
+@property --t {
+  syntax: "<number>";
+  initial-value: 120;
+  inherits: true;
+}
+/* won't be needed once Chrome supports round() */
+@property --s {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: true;
+}
+.countdown {
+  /*whenChromesupportsround(),thiscanbesimplified*//*moreonthisroundingtrick*https:;
+  //css-tricks.com/using-absolute-value-sign-rounding-and-modulo-in-css-today/*/--s: calc(var(--t)/1);
+  display: grid;
+  grid-column: 1;
+  grid-row: 1;
+  place-self: center;
+  margin: 1em auto;
+  width: 33px;
+  height: 33px;
+  position: relative;
+}
+
+
+.animate {
+  animation: t 120s linear;
+  -webkit-animation: t 120s linear;
+}
+
+
+.time {
+  font-size: 8px;
+  font-weight: bold;
+  font-family: ubuntu mono, consolas, monaco, monospace;
+  color: #000000;
+  white-space: nowrap;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+
+/* .countdown::after {
+  grid-column: 1;
+  grid-row: 1;
+  place-self: center;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: ubuntu mono, consolas, monaco, monospace;
+  color: #000000;
+  counter-reset: s var(--s);
+  content: "0:" counter(s, decimal-leading-zero);
+} */
+
+@keyframes t {
+  to {
+    --t: 0 ;
+  }
+}
+svg {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+[r] {
+  fill: none;
+  stroke: silver;
+}
+[r] + [r] {
+  --k: calc(var(--t)/120);
+  transform: rotate(-90deg);
+  stroke-linecap: round;
+  stroke: #f06a25;
+  stroke-dasharray: var(--k) 1;
+}

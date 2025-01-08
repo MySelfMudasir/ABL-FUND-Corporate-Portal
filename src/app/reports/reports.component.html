@@ -1,0 +1,131 @@
+<section class="" style="background: #fff; height:auto;">
+
+
+
+    <app-header-2></app-header-2>
+
+
+
+    <main class="">
+
+
+        <div class="mt-1 mt-lg-3 container-fluid p-0">
+            <div class="row m-0">
+                <div class="blue-header" style="height: 35px; background-color: #22417f;">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row m-0">
+            <div class="col-md-3 ps-0">
+                <!-- Sidebar -->
+                <app-sidebar></app-sidebar>
+                <!-- Sidebar -->
+            </div>
+            <div class="col-md-9 p-0">
+                <div class="main-content">
+
+                    <!-- <div class="row justify-content-end m-0" style="padding-top: 50px;">
+                        <div class="col-md-4 col-12">
+                            <div class="btn-group w-100 justify-content-end">
+                                <button class="btn cis">CIS</button>
+                                <button class="btn vps">VPS</button>
+                            </div>
+                        </div>
+                    </div> -->
+
+
+
+                    <form [formGroup]="reportForm">
+                        <div class="row m-0" style="padding-bottom: 210px;">
+                            <div class="col-md-6 col-12" style="padding-left: 15px; margin-top: 30px;">
+                                <label class="form-label"
+                                    style="font-size: 14px; font-weight: 500; margin-bottom: 10px;">
+                                    Report Name:
+                                </label>
+                                <select class="form-select w-100" data-style="btn-default"
+                                    (change)="onChange()" formControlName="reportName">
+                                    <option value="" disabled selected>Select One</option>
+                                    <option value="Account Statement">Account Statement</option>
+                                    <option value="CGT Certificate">CGT Certificate</option>
+                                    <option value="WHT Certificate">WHT Certificate</option>
+                                </select>
+                            </div>
+
+                            <div class="col-lg-6"></div>
+
+                            <div class="row m-0" *ngIf="isActive">
+                                <div class="col-md-6 col-12" style="margin-top: 50px;">
+                                    <label for="bs-datepicker-basic" class="form-label">
+                                        Date From:<span class="required-star"> *</span>
+                                    </label>
+                                    <input type="date" id="bs-datepicker-basic" placeholder="MM/DD/YYYY"
+                                        class="form-control" formControlName="fromDate" [min]="minDate" [max]="maxDate" required />
+                                </div>
+                                <div class="col-md-6 col-12" style="margin-top: 50px;">
+                                    <label for="bs-datepicker-format" class="form-label">
+                                        Date To:<span class="required-star"> *</span>
+                                    </label>
+                                    <input type="date" id="bs-datepicker-format" placeholder="MM/DD/YYYY"
+                                        class="form-control" formControlName="toDate" [min]="minDate" [max]="maxDate" required />
+                                </div>
+                                <!-- <div class="col-md-6 col-12" style="margin-top: 50px;">
+                                    <label class="form-label"
+                                        style="font-size: 14px; font-weight: 500; margin-bottom: 10px;">
+                                        Account Number:<span class="required-star"> *</span>
+                                    </label>
+                                    <select class="selectpicker w-100" data-style="btn-default"
+                                        formControlName="accountNumber" required>
+                                        <option>5037</option>
+                                        <option>6347</option>
+                                    </select>
+                                </div> -->
+
+                                <!-- Conditionally show the Funds Name field based on the selected Report Name -->
+                                <div class="col-md-6 col-12"
+                                    style="margin-top: 50px;">
+                                    <label class="form-label"
+                                        style="font-size: 14px; font-weight: 500; margin-bottom: 10px;">
+                                        Funds Name:<span class="required-star"> *</span>
+                                    </label>
+                                    <select class="form-select w-100" data-style="btn-default"
+                                        formControlName="fundCode" required>
+                                        <option value="" disabled selected>Select One</option>
+                                        <option *ngFor="let fund of fundsNames" value="{{fund.fundCode}}">{{fund.fundName}}</option>
+                                    </select>
+                                </div>
+
+                                <div *ngIf="isActive" class="row justify-content-center m-0"
+                                    style="margin-top: 70px !important;">
+                                    <div class="col-md-3 col-12">
+                                        <button type="submit" (click)="onSubmit()" class="btn btn-orange w-100">VIEW</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+
+    <!-- Footer2 (always visible) -->
+    <div class="row m-0">
+        <div class="col-12 p-0">
+        <app-footer2></app-footer2>
+        </div>
+    </div>
+
+
+</section>

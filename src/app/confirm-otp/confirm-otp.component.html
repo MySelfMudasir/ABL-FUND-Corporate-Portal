@@ -1,0 +1,166 @@
+<section class="" style="background: #fff; height: auto;">
+
+
+    <app-header></app-header>
+
+
+
+    <main class="mb-3">
+        <div class="d-flex align-items-center justify-content-center h-100 paddingdiv" style="padding: 15px;">
+
+            <div class="AuthenticationBody">
+                <div class="row justify-content-lg-end">
+                    <div class="col-lg-6">
+                        <div class="card" style="border-radius: 25px;">
+                            <div class="card-body">
+                                <div class="AuthenticationForm">
+                                    <form class="row justify-content-center needs-validation&quot; novalidate"
+                                        [formGroup]="signup">
+                                        <h4 class="mb-2 text-center fw-bold"
+                                            style="color: rgb(34, 65, 127); font-family: sans-serif; font-size: 20px;">
+                                            Confirm OTP and Enter Password
+                                        </h4>
+                                        <div class="formgroup col-lg-8 col-10">
+                                            <div class="form-password-toggle">
+                                                <label class="form-label" for="basic-default-password12">OTP:
+                                                <span style="color: red;"> *</span>
+                                                </label>
+                                                <div class="input-group mb-2">
+                                                  <input type="text" class="form-control" id="basic-default-password12"  name="otp" formControlName="otp" required="" />
+                                                  <span id="basic-default-password2" class="input-group-text cursor-pointer p-1">
+                                                    <app-spinner></app-spinner>
+                                                  </span>
+                                                </div>
+                                                <div class="text-danger text-right">
+                                                    @if(signup.controls['otp'].touched &&
+                                                    signup.controls['otp'].errors?.['required']) {
+                                                    <span>OTP Field is required.</span>
+                                                    }
+                                                    @else if (signup.controls['otp'].touched &&
+                                                    signup.controls['otp'].errors?.['minlength']) {
+                                                    <span>Minimum 5 characters required</span>
+                                                    }
+                                                    @else if (signup.controls['otp'].touched &&
+                                                    signup.controls['otp'].errors?.['maxlength']){
+                                                    <span>Maximum 5 characters required</span>
+                                                    }
+                                                </div>
+                                            </div>
+
+                                              
+                                            <!-- <div class="form-label-parent">
+                                                <label class="form-label" style="padding-left: 8px;">OTP:</label>
+                                                <span style="color: red;"> *</span>
+                                            </div>
+                                            <div class="password-input-container">
+                                                <input placeholder="" class="form-control mb-2" type="text" value=""
+                                                    name="otp" formControlName="otp" required="" />
+                                                <div class="text-danger text-right">
+                                                    @if(signup.controls['otp'].touched &&
+                                                    signup.controls['otp'].errors?.['required']) {
+                                                    <span>OTP Field is required.</span>
+                                                    }
+                                                    @else if (signup.controls['otp'].touched &&
+                                                    signup.controls['otp'].errors?.['minlength']) {
+                                                    <span>Minimum 5 characters required</span>
+                                                    }
+                                                    @else if (signup.controls['otp'].touched &&
+                                                    signup.controls['otp'].errors?.['maxlength']){
+                                                    <span>Maximum 5 characters required</span>
+                                                    }
+                                                </div>
+                                            </div> -->
+
+
+                                        </div>
+                                        <div class="formgroup col-lg-8 col-10">
+                                            <div class="form-password-toggle">
+                                                <label class="form-label" style="padding-left: 8px;">Password:</label>
+                                                <span style="color: red;"> *</span>
+                                                <div class="input-group input-group-merge mb-2">
+                                                    <input [type]="isNewPasswordVisible ? 'text' : 'password'"
+                                                        class="form-control" id="basic-default-password32"
+                                                        placeholder="" aria-describedby="basic-default-password"
+                                                        name="password" formControlName="password" required="" />
+                                                    <span class="input-group-text cursor-pointer"
+                                                        (click)="toggleNewPasswordVisibility()"
+                                                        id="basic-default-password">
+                                                        <i
+                                                            [class]="isNewPasswordVisible ? 'ti ti-eye' : 'ti ti-eye-off'"></i>
+                                                    </span>
+                                                </div>
+                                                <div class="text-danger text-right">
+                                                    @if(signup.controls['password'].touched &&
+                                                    signup.controls['password'].errors?.['required']) {
+                                                    <span>Password  Field is required.</span>
+                                                    }
+                                                    @else if (signup.controls['password'].touched &&
+                                                    signup.controls['password'].errors?.['minlength']) {
+                                                    <span>Minimum 5 characters required</span>
+                                                    }
+                                                    @else if (signup.controls['password'].touched &&
+                                                    signup.controls['password'].errors?.['maxlength']){
+                                                    <span>Maximum 5 characters required</span>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="formgroup col-lg-8 col-10">
+                                            <div class="form-password-toggle">
+                                                <label class="form-label" style="padding-left: 8px;">Confirm Password:</label>
+                                                <span style="color: red;"> *</span>
+                                                <div class="input-group input-group-merge mb-2">
+                                                    <input [type]="isConfirmPasswordVisible ? 'text' : 'password'"
+                                                        class="form-control" id="basic-default-password32"
+                                                        placeholder="" aria-describedby="basic-default-password"
+                                                        name="cPassword" formControlName="cPassword" required="" />
+                                                    <span class="input-group-text cursor-pointer"
+                                                        (click)="toggleConfirmPasswordVisibility()"
+                                                        id="basic-default-password">
+                                                        <i
+                                                            [class]="isConfirmPasswordVisible ? 'ti ti-eye' : 'ti ti-eye-off'"></i>
+                                                    </span>
+                                                </div>
+                                                <div class="text-danger text-right">
+                                                    @if(signup.controls['cPassword'].touched &&
+                                                    signup.controls['cPassword'].errors?.['required']) {
+                                                    <span>Confirm Password  Field is required.</span>
+                                                    }
+                                                    @else if (signup.controls['cPassword'].touched &&
+                                                    signup.controls['cPassword'].errors?.['minlength']) {
+                                                    <span>Minimum 5 characters required</span>
+                                                    }
+                                                    @else if (signup.controls['cPassword'].touched &&
+                                                    signup.controls['cPassword'].errors?.['maxlength']){
+                                                    <span>Maximum 5 characters required</span>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="formgroup d-grid gap-2  my-3 col-lg-6 col-8">                                            
+                                            <button type="submit" class="btn btn-lg btn-orange" (click)="onSubmit()">SUBMIT</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+
+
+    <!-- Footer (always visible) -->
+    <div class="row m-0">
+        <div class="col-12 p-0">
+        <app-footer></app-footer>
+        </div>
+    </div>
+
+
+</section>

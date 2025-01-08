@@ -1,0 +1,35 @@
+<!-- <div class="countdown border border-danger">
+  <svg viewBox="-50 -50 100 100" stroke-width="10">
+    <circle r="45"></circle>
+    <circle r="45" pathLength="1"></circle>
+  </svg>
+</div> -->
+
+
+<!-- <div class="countdown">
+  <svg viewBox="-50 -50 100 100" stroke-width="10">
+    <circle r="45"></circle>
+    <circle r="45" pathLength="1"></circle>
+  </svg>
+  <span class="time" style="user-select: none;" *ngIf="activeResendBtn">
+    {{ minutes }}:{{ seconds }}
+  </span>
+  <span class="time resend" *ngIf="!activeResendBtn" (click)="onResendOtpTriggered()" style="cursor: pointer;">
+    <i class="fa fa-refresh fa-2x" style="color: #22417F;"></i>
+  </span>
+</div> -->
+
+
+
+<div class="countdown m-0" [class.animate]="animationActive">
+  <svg viewBox="-50 -50 100 100" stroke-width="10">
+    <circle r="45" *ngIf="activeResendBtn" stroke="currentColor"></circle>
+    <circle r="45" *ngIf="activeResendBtn" stroke="currentColor" pathLength="1"></circle>
+  </svg>
+  <span class="time" style="user-select: none;" *ngIf="activeResendBtn">
+    {{ minutes }}:{{ seconds }}
+  </span>
+  <span class="time resend" *ngIf="!activeResendBtn" (click)="onResendOtpTriggered()" style="cursor: pointer;">
+    <i class="fa fa-refresh fa-2x" style="color: #22417F;"></i>
+  </span>
+</div>

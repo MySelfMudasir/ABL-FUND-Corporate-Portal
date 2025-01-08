@@ -1,0 +1,135 @@
+@font-face {
+    font-family: 'Helvetica-Bold';
+    src: url('/assets/fonts/Helvetica-Bold-Font.ttf');
+}
+
+.please {
+    font-family: 'Helvetica-Bold';
+	font-size: 20px;
+}
+
+.card-header {
+	border: 3px solid #22417f;
+	border-radius: 1rem;
+	min-height: 100px;
+	display: flex;
+	align-items: center;
+	text-align: start;
+    padding: 8px;
+}
+
+.card-header:before {
+	position: absolute;
+	content: "";
+	width: 50px;
+	height: 10px;
+	top: -5px;
+	left: 45px;
+	background: #fff;
+}
+
+.card-header h1 {
+	margin: 0;
+}
+
+.invest {
+	font-size: 28px !important;
+    padding: 0px;
+    margin: 0px;
+}
+
+.card-header h5 {
+	font-family: Helvetica-Bold;
+	color:  #22417f;
+    font-weight: bold;
+}
+
+.recommended {
+    font-size: 12px !important;
+}
+
+.loginto {
+    font-size: 12px !important;
+    line-height: 19px;
+}
+
+
+.ablfundsbrings{
+    text-align: justify;
+    line-height: 20px !important;
+    font-size: 13.80px;
+	color:  #22417f;
+    margin: 1rem 0;
+    font-family: Helvetica;
+}
+
+.investurl{
+    color: #f06a25;
+    font-family: Helvetica-Bold;
+    font-size: 13px;
+}
+
+.text-orange {
+	color: #f06a25;
+}
+
+.text-blue {
+    color:  #22417f;
+}
+
+hr {
+	margin: 2rem 0;
+	border: 0;
+	border-top: 3px solid #f06a25;
+	opacity: 1;
+}
+
+.features{
+    color:  #22417f;
+    font-family: Helvetica-Bold;
+	font-size: 20px;
+}
+
+.list-style1 {
+    padding: 0;
+    width: 100%;
+    margin: 1rem 0 0;
+    list-style: none;
+    position: relative;
+}
+
+.list-style1 li {
+	font-size: 14px;
+    position: relative; /* Make sure to position the li relative for absolute positioning of :before */
+    padding-left: 24px; /* Add padding to avoid text overlapping with the SVG */
+    margin-top: 5px;
+}
+
+.list-style1 li:before {
+    content: "";
+    display: inline-block;
+    width: 16px; /* Adjust size as needed */
+    height: 16px; /* Adjust size as needed */
+    background-image: url(/assets/images/ic.ca297ee4.svg); /* Update path as necessary */
+    background-size: cover;
+    position: absolute;
+    left: 0; /* Position the SVG */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for vertical centering */
+}
+
+.card-footer {
+    padding: 90px !important;
+    text-align: center;
+}
+
+.btn-orange {
+    background-color: #f06a25;
+    /* width: 100%; */
+    color: white;
+    border: none;
+    /* padding: 10px 20px; */
+    border-radius: 13px;
+    font-size: 16px;
+    box-shadow: 0 6px 12px -2px rgba(50, 50, 93, .25), 0 3px 7px -3px rgba(0, 0, 0, .3) !important;
+}

@@ -1,0 +1,125 @@
+
+
+<!-- Sidebar -->
+<div class="sidebar border-right" [class.active]="isSidebarVisible">
+    <div class="float-end">
+        <button class="btn btn-sm d-md-none xtoggle" (click)="toggleSidebar()">
+            <i class="fas fa-x" style="font-size: 25px;"></i>
+        </button>
+    </div>
+    <div class="menu-listing">
+      <ul>
+        <!-- <li [class.active]="isActive('/home')">
+          <a href="#" routerLink="/home"><i class="far fa-tachometer-alt"></i> Home</a>
+        </li> -->
+        <li [class.active]="isActive('/dashboard')">
+          <a href="#" routerLink="/dashboard"><i class="far fa-home"></i> Home</a>
+        </li>
+        <li [class.active]="isActive('/portfolioAllocationDetails')">
+          <a href="#" routerLink="/portfolioAllocationDetails"><i class="far fa-rectangle-list"></i> Portfolio Summary</a>
+        </li>
+        <!-- <li [class.active]="isActive('/investor-profile')">
+          <a href="#" routerLink="/investor-profile"><i class="far fa-user"></i> Investor Profile</a>
+        </li>
+        <li>
+          <a data-bs-toggle="collapse" data-bs-target="#transaction-collapse"
+            class="d-flex justify-content-between align-items-center cursor-pointer"
+            (click)="toggleChevron()">
+            <span><i class="far fa-wallet"></i> Transaction</span>
+            <i [ngClass]="{'fa-chevron-right': !isCollapsed, 'fa-chevron-down': isCollapsed}" 
+               class="far text-secondary" style="font-size: 15px;"></i>
+          </a>
+          <div id="transaction-collapse" class="collapse" [ngClass]="{'show': isActive('/investment') || isActive('/redemption') || isActive('/conversion')}">
+            <ul class="ps-4">
+              <li [class.active]="isActive('/investment')" style="border-top: 1px solid #ccc;">
+                <a href="#" routerLink="/investment" class="ms-4"><i class="far fa-chart-line"></i> Investment</a>
+              </li>
+              <li [class.active]="isActive('/redemption')">
+                <a href="#" routerLink="/redemption" class="ms-4"><i class="far fa-money-bill-wave"></i> Redemption</a>
+              </li>
+              <li [class.active]="isActive('/conversion')">
+                <a href="#" routerLink="/conversion" class="ms-4"><i class="far fa-exchange-alt"></i> Conversion</a>
+              </li>
+            </ul>
+          </div>
+        </li> -->
+        <li [class.active]="isActive('/reports')">
+          <a href="#" routerLink="/reports"><i class="far fa-file-alt"></i> Reports</a>
+        </li>
+        <li>
+          <a data-bs-toggle="collapse" data-bs-target="#setting-collapse"
+             class="d-flex justify-content-between align-items-center cursor-pointer" 
+             (click)="toggleChevron()">
+            <span><i class="far fa-gear"></i> Setting</span>
+            <i [ngClass]="{'fa-chevron-right': !isCollapsed, 'fa-chevron-down': isCollapsed}" 
+               class="far text-secondary" style="font-size: 15px;"></i>
+          </a>
+          <div id="setting-collapse" class="collapse" [ngClass]="{'show': isActive('/change-password')}" 
+               style="border-top: 1px solid #ccc;">
+            <ul class="ps-4">
+              <li [class.active]="isActive('/change-password')" style="border-top: 1px solid #ccc;">
+                <a href="#" routerLink="/change-password" class="ms-4"><i class="far fa-key"></i> Change Password</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        
+        <li [class.active]="isActive('/logout')">
+          <a href="javascript:void(0)" (click)="openModal()"><i class="far fa-sign-out-alt"></i> Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  
+<button class="btn text-white d-md-none" [ngClass]="{'bartoggle': !xtoggle}" (click)="toggleSidebar()">
+    <i class="fas fa-bars" style="font-size: 25px;"></i>
+</button>
+
+
+
+  <!-- Overlay for Mobile -->
+  <div class="overlay" [class.active]="isSidebarVisible" (click)="toggleSidebar()"></div>
+  
+  <!-- Main Content Area -->
+  <div class="content">
+    <!-- Your main content goes here -->
+  </div>
+  
+
+
+<!-- ==========================================================================================================================
+                                                    Modal
+============================================================================================================================ -->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#modalCenter">
+  Launch modal
+</button>
+
+
+<!-- Modal -->
+<div class="modal fade custom-modal" id="modalCenter" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <div class="modal-header custom-modal-header py-5">
+              <h5 class="modal-title text-white" id="modalCenterTitle">Confirmation</h5>
+              <button type="button" class="btn-close d-none" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body custom-modal-body">
+              <div class="row">
+                  <div class="col-12 mb-4">
+                      <label for="nameWithTitle" class="form-label">Are you sure you want to log out?</label>
+                  </div>
+              </div>
+          </div>
+          <div class="row justify-content-around border-0 modal-footer">
+            <button type="button" class="btn btn-lg btn-orange rounded-0 col-5" (click)="logout()">Logout</button>
+            <button type="button" class="btn btn-lg btn-orange rounded-0 col-5" data-bs-dismiss="modal" (click)="closeModal()">CANCEL</button>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- ==========================================================================================================================
+                                                    Modal
+============================================================================================================================ -->
+

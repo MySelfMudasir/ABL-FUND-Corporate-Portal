@@ -1,0 +1,9 @@
+{
+    "/corporateservices": {
+      "target": "http://192.168.102.44:8084/",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+}
+  

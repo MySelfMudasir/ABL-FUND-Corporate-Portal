@@ -1,0 +1,114 @@
+<section class="" style="background: #fff; height:auto;">
+
+
+    <app-header-2></app-header-2>
+
+
+
+    <main class="">
+
+
+        <div class="mt-1 mt-lg-3 container-fluid p-0">
+            <div class="row m-0">
+                <div class="blue-header" style="height: 35px; background-color: #22417f;">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row m-0">
+            <div class="col-md-3 p-0">
+                <!-- Sidebar -->
+                <app-sidebar></app-sidebar>
+                <!-- Sidebar -->
+            </div>
+            <div class="col-md-9 p-0">
+                <div class="main-content">
+
+                    <div class="row">
+                        <div class="col-12 p-0">
+                            <div class="card w-100 p-4">
+                                <div class="card-header">
+                                    <div class="row m-0 d-flex align-items-center">
+                                        <div class="col-md-8 col-12 p-0">
+                                            <h5>
+                                                <i class="fa-solid fa-chart-line p-2 rounded-2"
+                                                    style="color: #ffffff; background-color: #f06a25;"></i>
+                                                <span class=" table-head-title">
+                                                    Portfolio Summary
+                                                </span>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="table table-sm">
+                                        <thead class="" style="background-color: #22417f;">
+                                            <tr>
+                                                <th class="" (click)="sortData('fundName', 'string')">
+                                                    FUND NAME
+                                                    <span *ngIf="sortKey === 'fundName'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
+                                                </th>
+                                                <th class="text-end" (click)="sortData('availableUnits', 'number')">
+                                                    No. of Units	 
+                                                    <span *ngIf="sortKey === 'availableUnits'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
+                                                </th>
+                                                <th class="text-end" (click)="sortData('navPrice', 'number')">
+                                                    NAV (Rs.) 
+                                                    <span *ngIf="sortKey === 'navPrice'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
+                                                </th>
+                                                <th class="" (click)="sortData('navDate', 'date')">
+                                                    NAV DATE
+                                                    <span *ngIf="sortKey === 'navDate'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
+                                                </th>
+                                                <th class="text-end" (click)="sortData('availableAmount', 'number')">
+                                                    INVESTMENT VALUE (Rs.)
+                                                    <span *ngIf="sortKey === 'availableAmount'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="table-border-bottom-0" style="font-size: 10px;">
+                                            <tr *ngFor="let allocation of portfolioAllocation" class="border border-secondary border-bottom border-start-0 border-end-0">
+                                                <td>{{ allocation.fundName }}</td>
+                                                <td class="text-end">{{ allocation.availableUnits }}</td>
+                                                <td class="text-end">{{ allocation.navPrice }}</td>
+                                                <td>{{ allocation.navDate }}</td>
+                                                <td class="text-end">{{ allocation.availableAmount | number:'1.0-0'}}</td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot class="" style="background-color: #f06a25;">
+                                            <tr class="">
+                                                <td colspan="4" class="fw-bold text-end text-white totalInvestmentValue">
+                                                    Total Investment Value (Rs.):
+                                                </td>
+                                                <td class="fw-bold text-white text-end totalInvestmentValue">
+                                                    {{ totalBalanceAmount | number:'1.0-0'}}
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+
+    <!-- Footer2 (always visible) -->
+    <div class="row m-0">
+        <div class="col-12 p-0">
+        <app-footer2></app-footer2>
+        </div>
+    </div>
+
+
+</section>

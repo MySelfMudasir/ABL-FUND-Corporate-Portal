@@ -1,0 +1,114 @@
+header {
+    position: relative;
+}
+
+header::before, header::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    top: 57%; /* Adjust this based on your design needs */
+    left: 0;
+    right: 0;
+    z-index: 0; /* Behind the logos */
+}
+
+header::before {
+    background-color: #f06a25; /* First color */
+    width: 15%; /* Adjust this width as needed */
+}
+
+header::after {
+    background-color: #22417f; /* Second color */
+    width: 85%; /* Adjust this width as needed */
+    margin-left: auto; /* Align to the right */
+}
+
+header .container {
+    position: relative; /* Ensure the logos are on top of the line */
+    z-index: 1; /* Above the lines */
+}
+
+
+.account-title {
+    display: inline-block;     /* Ensure the element can have width */
+    max-width: 100%;           /* Limit the width to prevent overflow */
+    white-space: nowrap;       /* Prevent the text from wrapping to the next line */
+    overflow: hidden;          /* Hide overflowed text */
+    text-overflow: ellipsis;   /* Add ellipsis (...) when the text overflows */
+}
+
+.logo-side{
+    z-index: 1; 
+    width: 17.5%;
+    /* margin-top: 12px; */
+    margin-left: 3% !important;
+}
+.user-side{
+    z-index: 1; 
+    width: 11%;
+    margin-right: 50px;
+}
+.ABLFundslogo {
+	width: 100% !important;
+}
+
+
+
+@media (max-width: 768px) {
+
+    header::before, header::after {
+        content: "";
+        position: absolute;
+        height: 2px;
+        top: 60%; /* Adjust this based on your design needs */
+        left: 0;
+        right: 0;
+        z-index: 0; /* Behind the logos */
+    }
+
+    header .row {
+        flex-direction: row; /* Keep elements in a row */
+        justify-content: space-between; /* Align left and right */
+        align-items: center; /* Center vertically */
+    }
+
+    header::before {
+        width: 50%; /* Adjust decoration line */
+    }
+
+    header::after {
+        width: 50%;
+        margin-left: auto;
+    }
+
+    .btn {
+        margin-bottom: 0; /* Remove extra spacing on button */
+    }
+
+    .logo-side
+    {
+        width: 29%;
+        margin-left: 0px !important;
+    }
+
+    .user-side
+    {
+        z-index: 1; 
+        width: 19%;
+        margin-right: 0px !important;
+    }
+
+    .user-side .ABLdigitallogo
+    {
+        width: 100% !important;
+    }
+    
+    .ABLFundslogo {
+        width: 100% !important;
+    }
+}
+
+
+
+
+

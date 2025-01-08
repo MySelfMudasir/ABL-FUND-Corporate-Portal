@@ -1,0 +1,33 @@
+<tbody class="table-border-bottom-0" style="font-size: 10px;"> 
+  <tr *ngIf="transactionDetail.length === 0">
+    <td colspan="6" class="text-center">No data available</td>
+  </tr>
+  <ng-container *ngFor="let transaction of transactionDetail">
+    <tr class="">
+      <td>{{ transaction.transDate }}</td>
+      <td>{{ transaction.fundName }}</td>
+      <td>{{ transaction.transType }}</td>
+      <td>{{ transaction.units }}</td>
+      <td class="">{{ transaction.amount }}</td>
+      <td class="p-0" style="width: 1%;">
+          <button class="btn btn-sm border-0 p-0" 
+          *ngIf="transaction.transType === 'FTF'"
+          data-bs-toggle="collapse" 
+          [attr.data-bs-target]="'#collapse' + transaction.transId" 
+          aria-expanded="false" 
+          [attr.aria-controls]="'collapse' + transaction.transId"
+          id="accordionExample">
+              View More&nbsp;<i class="fa-solid fa-angle-down"></i>
+          </button>
+      </td>
+    </tr>
+    <!-- Add a new row if transType is "FTF" -->
+    <tr *ngIf="transaction.transType === 'FTF'" id="collapse{{ transaction.transId }}" class="bg-light accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <td>{{ transaction.transDate }}</td>
+      <td>{{ transaction.TO_FUND_CODE }}</td>
+      <td>{{ transaction.transType }}</td>
+      <td>{{ transaction.units }}</td>
+      <td class="" colspan="6">({{ transaction.amount }})</td>
+    </tr>
+  </ng-container>
+</tbody>

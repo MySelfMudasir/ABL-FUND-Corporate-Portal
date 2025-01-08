@@ -1,0 +1,340 @@
+<section class="" style="background: #fff; height:auto;">
+
+
+    <app-header-2></app-header-2>
+
+
+
+    <main class="">
+
+
+        <div class="mt-1 mt-lg-3 container-fluid p-0">
+            <div class="row m-0">
+                <div class="blue-header" style="height: 35px; background-color: #22417f;">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row m-0" style="">
+            <div class="col-md-3 p-0">
+                <!-- Sidebar -->
+                <app-sidebar></app-sidebar>
+                <!-- Sidebar -->
+            </div>
+            <div class="col-md-9 p-0">
+                <div class="main-content">
+                    <!-- <div class="row" style="padding-bottom: 50px;">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2 d-flex justify-content-end align-items-center">
+                            <label class="form-label text-end" style="color: #22417f; font-size: 14px;">Account #: </label>
+                        </div>
+                        <div class="col-md-3 p-0">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>{{folionumber}}</option>
+                              </select>
+                        </div>
+                    </div> -->
+
+                    <div class="row gx-xl-5 p-5 pt-0">
+                        <!-- First Card: Portfolio Summary -->
+                        <!-- <div class="col-lg-4 col-md-6 col-12 my-5">
+                            <div class="card custom-card h-100">
+                                <h5 class="card-title">
+                                    Portfolio Summary
+                                </h5>
+                                <div class="card-body px-0">
+                                    <div class="row m-0">
+                                        <div class="col-12">
+                                            <ul class="list-unstyled">
+                                                <li class="investment-value-label">Investment Value</li>
+                                                <li class="investment-value-amount">Rs. {{totalBalanceAmount | number:'1.0-0'}}</li>
+                                                <li class="text-dark">As on {{asOnDate}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <a href="#" routerLink="/portfolioAllocationDetails">
+                                        <button class="btn btn-orange w-100">Check Details</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div> -->
+
+
+
+                        <!-- First Card: Portfolio Analytics -->
+                        <div class="col-md-4 col-12 mb-5">
+                            <div class="card custom-card">
+                                <div class="card-body p-0 align-self-center">
+                                    <h5 class="card-title">
+                                        My Portfolio Analytics
+                                    </h5>
+                                    <div class="row m-0 d-flex">
+                                        <div class="col-md-2 col-3 p-0">
+                                            <span class="currency-badge">PKR</span>
+                                        </div>
+                                        <div class="col-md-10 col-9">
+                                            <div class="investment-value-label fw-bold">Investment Value</div>
+                                            <div class="investment-value-amount fw-bold">Rs. {{cisInvestmentValue | number:'1.0-0'}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 text-center d-flex justify-content-center">
+                                        <app-chart #chart1 [chartData]="chartData"></app-chart>
+                                        <!-- <app-chart *ngIf="chartVisibility else loadingChart" #chart1 [chartData]="chartData"></app-chart>
+                                        <ng-template #loadingChart>
+                                            <p>Loading Chart...</p>
+                                        </ng-template> -->
+                                    </div>
+                                </div>
+                                <div class="text-center my-1">
+                                    <span style="color: #22417f">As On</span><br>
+                                    <i class="far fa-calendar" style="color: #F06A25" aria-hidden="true"></i>
+                                    <span class="text-dark"> {{asOnDate}}</span>
+                                </div>
+                                <div class="text-center">
+                                    <a href="#" routerLink="/portfolioAllocationDetails">
+                                        <button class="btn btn-orange w-75">Check Details</button>
+                                    </a>
+                                </div>
+                            </div>   
+                        </div>
+
+
+                        <!-- Second Card: Portfolio Analytics -->
+                        <div class="col-md-4 col-12 mb-5">
+                            <div class="card custom-card">
+                                <div class="card-body p-0 align-self-center">
+                                    <h5 class="card-title">
+                                        My Portfolio Analytics
+                                    </h5>
+                                    <div class="row m-0 d-flex">
+                                        <div class="col-md-2 col-3 p-0">
+                                            <span class="currency-badge">PKR</span>
+                                        </div>
+                                        <div class="col-md-10 col-9">
+                                            <div class="investment-value-label fw-bold">Investment Value</div>
+                                            <div class="investment-value-amount fw-bold">Rs. {{totalBalanceAmount | number:'1.0-0'}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 text-center d-flex justify-content-center">
+                                        <app-chart #chart2 [chartData]="chartData2"></app-chart>
+                                        <!-- <app-chart *ngIf="chartVisibility else loadingChart" #chart2 [chartData]="chartData2"></app-chart>
+                                        <ng-template #loadingChart>
+                                            <p>Loading Chart...</p>
+                                        </ng-template> -->
+                                    </div>
+                                </div>
+                                <div class="text-center my-1">
+                                    <span style="color: #22417f">As On</span><br>
+                                    <i class="far fa-calendar" style="color: #F06A25" aria-hidden="true"></i>
+                                    <span class="text-dark"> {{asOnDate}}</span>
+                                </div>
+                                <div class="text-center">
+                                    <a href="#" routerLink="/portfolioAllocationDetails">
+                                        <button class="btn btn-orange w-75">Check Details</button>
+                                    </a>
+                                </div>
+                            </div>   
+                        </div>
+
+
+                        <!-- Third Card: Company Advertisement -->
+                        <div class="col-md-4 col-12 mb-5">
+                            <div class="card custom-card ad-card">
+                                <div class="card-body p-0 text-center">
+                                    <div class="ad-content h-100">
+                                        <div id="carouselExampleIndicators" class="carousel slide h-100" data-bs-ride="carousel" data-bs-interval="2000">
+                                            <div class="carousel-indicators">
+                                                <button type="button" class="active btn-orange" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1"></button>
+                                                <button type="button" class="btn-orange" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                                <button type="button" class="btn-orange" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                            </div>
+                                            <div class="carousel-inner h-100">
+                                                <div class="carousel-item active h-100">
+                                                    <img src="assets/images/ads/ad1.png" class="d-block w-100 h-100 img-fluid" alt="Slide 1">
+                                                    <div class="overlay">
+                                                        <div class="carousel-caption">
+                                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, esse!</p>
+                                                            <a href="javascript:void(0);" class="btn btn-orange">View More</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item h-100">
+                                                    <img src="assets/images/ads/ad1.png" class="d-block w-100 h-100 img-fluid" alt="Slide 2">
+                                                    <div class="overlay">
+                                                        <div class="carousel-caption">
+                                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, esse!</p>
+                                                            <a href="javascript:void(0);" class="btn btn-orange">View More</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item h-100">
+                                                    <img src="assets/images/ads/ad1.png" class="d-block w-100 h-100 img-fluid" alt="Slide 3">
+                                                    <div class="overlay">
+                                                        <div class="carousel-caption">
+                                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, esse!</p>
+                                                            <a href="javascript:void(0);" class="btn btn-orange">View More</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon btn-orange d-none" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon btn-orange d-none" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-12 p-0">
+                            <div class="card w-100 p-4">
+                                <div class="card-header">
+                                    <div class="row m-0 py-2 d-flex align-items-center">
+                                        <div class="col-lg-8 col-md-6 col-12 p-0">
+                                            <h5>
+                                                <i class="fa-regular fa-arrows-retweet p-2 rounded-2"
+                                                    style="color: #ffffff; background-color: #f06a25;"></i>
+                                                <span class="table-head-title">
+                                                    Transaction Status
+                                                </span>
+                                            </h5>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 col-12 p-0">
+                                            <div class="row m-0 d-flex flex-wrap">
+                                                <div class="col-md-6 col-6 p-0">
+                                                    <button class="btn w-100 executed_toggle" 
+                                                            (click)="getTransactionDetail('EXECUTED'); toggleButtonState('EXECUTED')" 
+                                                            [disabled]="isButtonDisabled">
+                                                      Executed
+                                                    </button>
+                                                  </div>
+                                                  <div class="col-md-6 col-6 p-0">
+                                                    <button class="btn w-100 inprocess_toggle" 
+                                                            (click)="getTransactionDetail('INPROCESS'); toggleButtonState('INPROCESS')" 
+                                                            [disabled]="!isButtonDisabled">
+                                                      In-Process
+                                                    </button>
+                                                  </div>                                                  
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                
+                                <div class="table-responsive text-nowrap px-5" style="max-height: 300px !important;">
+                                    <table class="table table-sm">
+                                      <thead class="" style="background-color: #22417f; position: sticky; top: 0; z-index: 1;">
+                                        <tr>
+                                          <th class="text-white fw-bold" (click)="sortData('transDate')">
+                                            Date 
+                                            <!-- <i *ngIf="sortKey === 'transDate'" [ngClass]="sortOrder === 'asc' ? 'fa-sort-up' : 'fa-sort-down'" class="fa-sharp fa-regular" style="color: #ffffff;"></i> -->
+                                            <span *ngIf="sortKey === 'transDate'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
+                                          </th>
+                                          <th class="text-white fw-bold" (click)="sortData('fundName')">
+                                            Fund
+                                            <!-- <i *ngIf="sortKey === 'fundName'" [ngClass]="sortOrder === 'asc' ? 'fa-sort-up' : 'fa-sort-down'" class="fa-sharp fa-regular" style="color: #ffffff;"></i> -->
+                                            <span *ngIf="sortKey === 'fundName'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
+                                          </th>
+                                          <th class="text-white fw-bold" (click)="sortData('transType')">
+                                            Type 
+                                            <!-- <i *ngIf="sortKey === 'transType'" [ngClass]="sortOrder === 'asc' ? 'fa-sort-up' : 'fa-sort-down'" class="fa-sharp fa-regular" style="color: #ffffff;"></i> -->
+                                            <span *ngIf="sortKey === 'transType'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
+                                          </th>
+                                          <th class="text-white fw-bold" (click)="sortData('units')">
+                                            Units 
+                                            <!-- <i *ngIf="sortKey === 'units'" [ngClass]="sortOrder === 'asc' ? 'fa-sort-up' : 'fa-sort-down'" class="fa-sharp fa-regular" style="color: #ffffff;"></i> -->
+                                            <span *ngIf="sortKey === 'units'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
+                                          </th>
+                                          <th class="text-white fw-bold" (click)="sortData('amount')">
+                                            Amount 
+                                            <!-- <i *ngIf="sortKey === 'amount'" [ngClass]="sortOrder === 'asc' ? 'fa-sort-up' : 'fa-sort-down'" class="fa-sharp fa-regular" style="color: #ffffff;"></i> -->
+                                            <span *ngIf="sortKey === 'amount'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
+                                          </th>
+                                        </tr>
+                                      </thead>
+                                      <tbody class="table-border-bottom-0" style="font-size: 10px;"> 
+                                        <tr *ngIf="transactionDetail.length === 0">
+                                          <td colspan="5" class="text-center">No data available</td>
+                                        </tr>
+                                        <ng-container *ngFor="let transaction of transactionDetail">
+                                          <tr class="">
+                                            <td>{{ transaction.transDate }}</td>
+                                            <td>{{ transaction.fundName }}</td>
+                                            <td>{{ transaction.transType }}</td>
+                                            <td>{{ transaction.units }}</td>
+                                            <td class="">{{ transaction.amount | number:'1.0-0' }}</td>
+                                          </tr>
+                                          <!-- Add a new row if transType is "FTF" -->
+                                          <tr *ngIf="transaction.transType === 'FTF'" class="">
+                                            <td>{{ transaction.transDate }}</td>
+                                            <td>{{ transaction.TO_FUND_CODE }}</td>
+                                            <td>{{ transaction.transType }}</td>
+                                            <td>{{ transaction.units }}</td>
+                                            <td class="">({{ transaction.amount | number:'1.0-0' }})</td>
+                                          </tr>
+                                        </ng-container>
+                                      </tbody>
+                                      
+                                    </table>
+                                  </div>
+                                  
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+
+
+
+
+    <!-- Footer2 (always visible) -->
+    <div class="row m-0">
+        <div class="col-12 p-0">
+        <app-footer2></app-footer2>
+        </div>
+    </div>
+
+
+
+        <!-- <div class="accordion mt-4" id="accordionExample">
+          <div class="card accordion-item active">
+            <h2 class="accordion-header" id="headingOne">
+              <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accordionOne" aria-expanded="true" aria-controls="accordionOne">
+                Accordion Item 1
+              </button>
+            </h2>
+    
+            <div id="accordionOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                Lemon drops chocolate cake gummies carrot cake chupa chups muffin topping. Sesame snaps icing marzipan gummi
+                bears macaroon dragée danish caramels powder. Bear claw dragée pastry topping soufflé. Wafer gummi bears
+                marshmallow pastry pie.
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+
+
+</section>

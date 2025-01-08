@@ -1,0 +1,23 @@
+<header class="position-relative p-1">
+    <div class="container-fluid">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-lg-1 p-1 col-md-5 col-4 bg-white logo-side" style="">
+                <img alt="ABL Funds" loading="lazy" width="239" height="40" decoding="async" data-nimg="1" class="ABLFundslogo w-100" src="assets/images/ABLFunds.8234088b.svg" style="color: transparent; width: 150px; height: auto;">
+            </div>
+            <div class="col-lg-3 col-md-5 col-8 bg-transparent p-0 user-side">
+                <div class="btn-group mb-1">
+                    <div type="button" class="btn-xs fw-bold user">
+                        <span class="account-title" style="font-size: 14px; color: #22417f; cursor: default;">{{accountTitle}}</span>
+                    </div>
+                    <i class="fa-solid fa-caret-down ms-2" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 15px; color: #22417f; cursor: pointer;"></i>
+                    <!-- <button type="button" class="dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" style="">
+                      <span class="visually-hidden">Toggle Dropdown</span>
+                    </button> -->
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="javascript:void(0);" (click)="logout()">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
