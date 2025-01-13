@@ -1,0 +1,45 @@
+
+
+
+
+
+.AuthenticationBody {
+    background: url(/assets/images/LoginImgBg.jpg) no-repeat;
+    background-position: top;
+    background-size: cover;
+    padding: .5rem !important;
+    border-radius: 1.6rem;
+    width: 90%;
+    height: auto;
+}
+
+
+
+.btn {
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    box-shadow: 0 6px 12px -2px rgba(50,50,93,.25),0 3px 7px -3px rgba(0,0,0,.3)!important;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.btn-blue {
+    background-color: #22417f; 
+}
+.btn-orange {
+    background-color: #f06a25;
+}
+
+@media (max-width: 768px) {
+
+    .paddingdiv{
+        padding: 0px !important;
+        padding-top: 15px !important;
+    }
+}
+
+

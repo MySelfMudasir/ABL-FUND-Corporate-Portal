@@ -28,6 +28,15 @@ export class ApiService {
   }
 
 
+  AuthenticateAdmin(data: any, headers: HttpHeaders): Observable<any> {
+    const completeUrl = `${this.baseUrl}/api/user/AuthenticateUser`;
+    let params = new HttpParams()
+        .set('adminid', data.userid)
+        .set('adminpwd', data.userpwd);
+    return this.http.post<any>(completeUrl, null, { headers, params });
+  }
+
+
 
   GetPortfolioSummary(data: any, headers: HttpHeaders): Observable<any> {
     const completeUrl = `${this.baseUrl}/api/account/GetPortfolioSummary`;

@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ConfirmOTPComponent } from './confirm-otp/confirm-otp.component';
 import { AdminComponent } from './admin/admin.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 export const routes: Routes = [
 
@@ -27,7 +28,8 @@ export const routes: Routes = [
     { path: 'confirm-otp', component: ConfirmOTPComponent}, // Guard for login page
     { path: 'login', component: LoginComponent, canActivate: [AuthGuard] }, // Guard for login page
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-    { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+    { path: 'admin', component: AdminComponent },
+    { path: 'admin-login', component: AdminLoginComponent },
     { path: 'portfolioAllocationDetails', component: PortfolioAllocationDetailsComponent, canActivate: [AuthGuard] },
     // { path: 'investor-profile', component: InvestorProfileComponent, canActivate: [AuthGuard] },
     // { path: 'investment', component: InvestmentComponent, canActivate: [AuthGuard] },
