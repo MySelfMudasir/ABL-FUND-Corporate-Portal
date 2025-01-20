@@ -38,7 +38,7 @@ export class ReportsComponent {
     this.initializeThemeComponents();
 
     // Set minimum date to January 1, 2020
-    const minDate = new Date('2020-01-01');
+    const minDate = new Date('01-01-2023');
     this.minDate = minDate.toISOString().split('T')[0];
     // Set maximum date to today's date
     const maxDate = new Date();
@@ -55,7 +55,14 @@ export class ReportsComponent {
     fundCode: new FormControl('', Validators.required)
   });
 
-
+  // Simplified formatDate function
+  formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  }
 
   onChange()
   {
@@ -69,6 +76,15 @@ export class ReportsComponent {
   onSubmit() {
     if (this.reportForm.valid) {
       console.log('Form Submitted!', this.reportForm.value);
+
+      // push formate date to form
+      const { fromDate, toDate } = this.reportForm.value;
+      this.reportForm.patchValue({
+        fromDate: this.formatDate(fromDate),
+        toDate: this.formatDate(toDate)
+      });
+
+
       this.loadingAlert('Processing your request...', 'Loading...'); // Pass a message to the loading alert
       this.generateReport();
     } else {

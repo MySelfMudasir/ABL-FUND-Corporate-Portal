@@ -27,9 +27,9 @@ export class DashboardComponent {
   cisInvestmentValue:string = '';
   asOnDate:string = '';
   folionumber:string = '';
-  transexecuted:string = 'EXECUTED';
+  transexecuted:string = 'INPROCESS';
   transactionDetail: any[] = [];
-  isButtonDisabled:boolean = false;
+  isButtonDisabled:boolean = true;
   sortKey = ''; // Default sorting key
   sortOrder = 'asc'; // Default ascending order
   chartVisibility: boolean = true;
@@ -67,7 +67,7 @@ export class DashboardComponent {
     this.folionumber = this.stateService.getAccountNumber();
     this.PortfolioSummary();
     this.cnicPortfolioDetail();
-    this.portfolioAllocationDetail(); 
+    // this.portfolioAllocationDetail(); 
     this.getTransactionDetail(this.transexecuted);
     
     // setTimeout(() => {   
@@ -80,7 +80,7 @@ export class DashboardComponent {
 
 
   chartData: any = {
-    type: 'doughnut',
+    type: 'pie',
     data: {
       labels: [],
       datasets: [

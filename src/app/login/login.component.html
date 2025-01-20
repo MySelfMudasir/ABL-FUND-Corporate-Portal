@@ -1,17 +1,17 @@
-<section class="" style="background: #fff; height: auto;">
+<section class="" style="">
 
 
     <app-header></app-header>
 
 
 
-    <main class="mb-3">
+    <main class="">
         <div class="d-flex align-items-center justify-content-center h-100 paddingdiv" style="padding: 15px;">
 
-            <div class="AuthenticationBody">
-                <div class="row justify-content-lg-end">
-                    <div class="col-lg-6">
-                        <div class="card" style="border-radius: 25px;">
+            <div class="AuthenticationBody d-flex justify-content-end">
+                <div class="row justify-content-lg-end m-0">
+                    <div class="col-lg-6 p-0">
+                        <div class="card">
                             <div class="card-body">
                                 <div class="AuthenticationForm">
                                     <form class="row justify-content-center needs-validation&quot; novalidate"
@@ -29,20 +29,20 @@
                                             <div class="password-input-container">
                                                 <input placeholder="" class="form-control mb-2" type="text" value=""
                                                     name="userid" formControlName="userid" required="" />
-                                                    <div class="text-danger text-right">
-                                                        @if(login.controls['userid'].touched &&
-                                                        login.controls['userid'].errors?.['required']) {
-                                                        <span>UserId Field is required.</span>
-                                                        }
-                                                        @else if (login.controls['userid'].touched &&
-                                                        login.controls['userid'].errors?.['minlength']) {
-                                                        <span>Minimum 5 characters required</span>
-                                                        }
-                                                        @else if (login.controls['userid'].touched &&
-                                                        login.controls['userid'].errors?.['maxlength']){
-                                                        <span>Maximum 5 characters required</span>
-                                                        }
-                                                    </div>
+                                                <div class="text-danger text-right">
+                                                    @if(login.controls['userid'].touched &&
+                                                    login.controls['userid'].errors?.['required']) {
+                                                    <span>UserId Field is required.</span>
+                                                    }
+                                                    @else if (login.controls['userid'].touched &&
+                                                    login.controls['userid'].errors?.['minlength']) {
+                                                    <span>Minimum 5 characters required</span>
+                                                    }
+                                                    @else if (login.controls['userid'].touched &&
+                                                    login.controls['userid'].errors?.['maxlength']){
+                                                    <span>Maximum 5 characters required</span>
+                                                    }
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="formgroup col-lg-8 col-10">
@@ -64,7 +64,7 @@
                                                 <div class="text-danger text-right">
                                                     @if(login.controls['userpwd'].touched &&
                                                     login.controls['userpwd'].errors?.['required']) {
-                                                    <span>Password  Field is required.</span>
+                                                    <span>Password Field is required.</span>
                                                     }
                                                     @else if (login.controls['userpwd'].touched &&
                                                     login.controls['userpwd'].errors?.['minlength']) {
@@ -85,20 +85,32 @@
                                                 Forgot Password</a>
                                         </div>
 
-                                        <div class="formgroup d-grid gap-2  my-3 col-lg-6 col-8">
-                                            <button type="submit" class="btn btn-lg btn-orange" (click)="onSubmit()">LOGIN</button>
+                                        <div class="card-foot formgroup my-3 col-lg-10 col-10">
+                                            <div class="row">
+                                                <div class="col-12 col-lg-6 my-1">
+                                                    <button type="submit" class="btn btn-orange w-100"
+                                                        (click)="onSubmit()">LOGIN</button>
+                                                </div>
+                                                <div class="col-12 col-lg-6 my-1">
+                                                    <a class="btn btn-blue w-100" href="" routerLink="/signup" style="">
+                                                        GET ONLINE ACCESS
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="row my-3">
-                                            <div class="formgroup d-grid mb-md-0 mb-3 col-md-6 col-12">
-                                                <button class="btn fs-lg-6 btn-blue" type="button">CREATE NEW ACCOUNT</button>
-                                            </div>
-                                            <div class="formgroup d-grid col-md-6 col-12">
+                                            <!-- <div class="formgroup d-grid mb-md-0 mb-3 col-md-12 col-12 text-center">
+                                                <a class="" href="" routerLink="/signup">
+                                                    <button class="btn fs-lg-6 btn-blue" type="button">GET ONLINE ACCESS</button>
+                                                </a>
+                                            </div> -->
+                                            <!-- <div class="formgroup d-grid col-md-6 col-12">
                                                 <a class="" href="" routerLink="/signup">
                                                     <button class="btn fs-lg-6 btn-orange w-100" type="button">GET ONLINE
                                                         ACCESS</button>
                                                 </a>
-                                            </div>
+                                            </div> -->
                                         </div>
 
                                     </form>
@@ -113,12 +125,12 @@
     </main>
 
 
-    <!-- Footer (always visible) -->
-    <div class="row m-0">
-        <div class="col-12 p-0">
-        <app-footer></app-footer>
-        </div>
-    </div>
-
 
 </section>
+
+<!-- Footer (always visible) -->
+<div class="row m-0">
+    <div class="col-12 p-0">
+        <app-footer></app-footer>
+    </div>
+</div>

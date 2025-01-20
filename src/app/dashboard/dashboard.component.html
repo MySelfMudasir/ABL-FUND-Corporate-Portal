@@ -1,4 +1,4 @@
-<section class="" style="background: #fff; height:auto;">
+<section class="" style="">
 
 
     <app-header-2></app-header-2>
@@ -17,7 +17,7 @@
 
 
 
-        <div class="row m-0" style="">
+        <div class="row m-0">
             <div class="col-md-3 p-0">
                 <!-- Sidebar -->
                 <app-sidebar></app-sidebar>
@@ -37,7 +37,7 @@
                         </div>
                     </div> -->
 
-                    <div class="row gx-xl-5 p-5 pt-0">
+                    <div class="row gx-xl-5 p-0 m-0">
                         <!-- First Card: Portfolio Summary -->
                         <!-- <div class="col-lg-4 col-md-6 col-12 my-5">
                             <div class="card custom-card h-100">
@@ -66,11 +66,11 @@
 
 
                         <!-- First Card: Portfolio Analytics -->
-                        <div class="col-md-4 col-12 mb-5">
+                        <div class="col-lg-3 col-12 mb-5">
                             <div class="card custom-card">
                                 <div class="card-body p-0 align-self-center">
                                     <h5 class="card-title">
-                                        My Portfolio Analytics
+                                        Portfolio Summary
                                     </h5>
                                     <div class="row m-0 d-flex">
                                         <div class="col-md-2 col-3 p-0">
@@ -103,8 +103,124 @@
                         </div>
 
 
+                        <!-- table -->
+                         <div class="col-lg-9 col-12 mb-5">
+                            <div class="card w-100 p-4">
+                                <div class="card-header">
+                                    <div class="row m-0 py-2 d-flex align-items-center">
+                                        <div class="col-lg-8 col-md-6 col-12 p-0">
+                                            <h5>
+                                                <i class="fa-regular fa-arrows-retweet p-2 rounded-2"
+                                                    style="color: #ffffff; background-color: #f06a25;"></i>
+                                                <span class="table-head-title">
+                                                    Transaction Status
+                                                </span>
+                                            </h5>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 col-12 p-0">
+                                            <div class="row m-0 d-flex flex-wrap">
+                                                <div class="col-md-6 col-6 p-0">
+                                                    <button class="btn w-100 inprocess_toggle" 
+                                                            (click)="getTransactionDetail('INPROCESS'); toggleButtonState('INPROCESS')" 
+                                                            [disabled]="!isButtonDisabled">
+                                                      In-Process
+                                                    </button>
+                                                  </div>
+                                                  <div class="col-md-6 col-6 p-0">
+                                                    <button class="btn w-100 executed_toggle" 
+                                                            (click)="getTransactionDetail('EXECUTED'); toggleButtonState('EXECUTED')" 
+                                                            [disabled]="isButtonDisabled">
+                                                      Executed
+                                                    </button>
+                                                  </div>                                                  
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                
+                                <div class="table-responsive text-nowrap px-5" style="max-height: 300px !important;">
+                                    <table class="table table-sm">
+                                      <thead class="" style="background-color: #22417f; position: sticky; top: 0; z-index: 1;">
+                                        <tr>
+                                          <th class="text-white fw-bold" (click)="sortData('transDate')">
+                                            Date 
+                                            <span *ngIf="sortKey === 'transDate'">
+                                                <i class="fa" [ngClass]="sortOrder === 'asc' ? 'fa-arrow-up' : 'fa-arrow-down'"></i>
+                                            </span>
+                                            <span *ngIf="sortKey !== 'transDate'">
+                                                <i class="fa fa-arrow-up-arrow-down"></i>
+                                            </span>
+                                          </th>
+                                          <th class="text-white fw-bold" (click)="sortData('fundName')">
+                                            Fund
+                                            <span *ngIf="sortKey === 'fundName'">
+                                                <i class="fa" [ngClass]="sortOrder === 'asc' ? 'fa-arrow-up' : 'fa-arrow-down'"></i>
+                                            </span>
+                                            <span *ngIf="sortKey !== 'fundName'">
+                                                <i class="fa fa-arrow-up-arrow-down"></i>
+                                            </span>
+                                          </th>
+                                          <th class="text-white fw-bold" (click)="sortData('transType')">
+                                            Type 
+                                            <span *ngIf="sortKey === 'transType'">
+                                                <i class="fa" [ngClass]="sortOrder === 'asc' ? 'fa-arrow-up' : 'fa-arrow-down'"></i>
+                                            </span>
+                                            <span *ngIf="sortKey !== 'transType'">
+                                                <i class="fa fa-arrow-up-arrow-down"></i>
+                                            </span>
+                                          </th>
+                                          <th class="text-white fw-bold" (click)="sortData('units')">
+                                            Units 
+                                            <span *ngIf="sortKey === 'units'">
+                                                <i class="fa" [ngClass]="sortOrder === 'asc' ? 'fa-arrow-up' : 'fa-arrow-down'"></i>
+                                            </span>
+                                            <span *ngIf="sortKey !== 'units'">
+                                                <i class="fa fa-arrow-up-arrow-down"></i>
+                                            </span>
+                                          </th>
+                                          <th class="text-white fw-bold" (click)="sortData('amount')">
+                                            Amount 
+                                            <span *ngIf="sortKey === 'amount'">
+                                                <i class="fa" [ngClass]="sortOrder === 'asc' ? 'fa-arrow-up' : 'fa-arrow-down'"></i>
+                                            </span>
+                                            <span *ngIf="sortKey !== 'amount'">
+                                                <i class="fa fa-arrow-up-arrow-down"></i>
+                                            </span>
+                                          </th>
+                                        </tr>
+                                      </thead>
+                                      <tbody class="table-border-bottom-0" style="font-size: 10px;"> 
+                                        <tr *ngIf="transactionDetail.length === 0">
+                                          <td colspan="5" class="text-center">No data available</td>
+                                        </tr>
+                                        <ng-container *ngFor="let transaction of transactionDetail">
+                                          <tr class="">
+                                            <td>{{ transaction.transDate }}</td>
+                                            <td>{{ transaction.fundName }}</td>
+                                            <td>{{ transaction.transType }}</td>
+                                            <td>{{ transaction.units }}</td>
+                                            <td class="">{{ transaction.amount | number:'1.0-0' }}</td>
+                                          </tr>
+                                          <tr *ngIf="transaction.transType === 'FTF'" class="">
+                                            <td>{{ transaction.transDate }}</td>
+                                            <td>{{ transaction.TO_FUND_CODE }}</td>
+                                            <td>{{ transaction.transType }}</td>
+                                            <td>{{ transaction.units }}</td>
+                                            <td class="">({{ transaction.amount | number:'1.0-0' }})</td>
+                                          </tr>
+                                        </ng-container>
+                                      </tbody>
+                                      
+                                    </table>
+                                  </div>
+                            </div>
+                         </div>
+
+
                         <!-- Second Card: Portfolio Analytics -->
-                        <div class="col-md-4 col-12 mb-5">
+                        <!-- <div class="col-md-4 col-12 mb-5">
                             <div class="card custom-card">
                                 <div class="card-body p-0 align-self-center">
                                     <h5 class="card-title">
@@ -121,10 +237,6 @@
                                     </div>
                                     <div class="mt-2 text-center d-flex justify-content-center">
                                         <app-chart #chart2 [chartData]="chartData2"></app-chart>
-                                        <!-- <app-chart *ngIf="chartVisibility else loadingChart" #chart2 [chartData]="chartData2"></app-chart>
-                                        <ng-template #loadingChart>
-                                            <p>Loading Chart...</p>
-                                        </ng-template> -->
                                     </div>
                                 </div>
                                 <div class="text-center my-1">
@@ -138,11 +250,11 @@
                                     </a>
                                 </div>
                             </div>   
-                        </div>
+                        </div> -->
 
 
                         <!-- Third Card: Company Advertisement -->
-                        <div class="col-md-4 col-12 mb-5">
+                        <!-- <div class="col-md-4 col-12 mb-5">
                             <div class="card custom-card ad-card">
                                 <div class="card-body p-0 text-center">
                                     <div class="ad-content h-100">
@@ -193,12 +305,12 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         
                     </div>
 
 
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-12 p-0">
                             <div class="card w-100 p-4">
                                 <div class="card-header">
@@ -232,8 +344,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                                 
                                 <div class="table-responsive text-nowrap px-5" style="max-height: 300px !important;">
                                     <table class="table table-sm">
@@ -241,27 +351,22 @@
                                         <tr>
                                           <th class="text-white fw-bold" (click)="sortData('transDate')">
                                             Date 
-                                            <!-- <i *ngIf="sortKey === 'transDate'" [ngClass]="sortOrder === 'asc' ? 'fa-sort-up' : 'fa-sort-down'" class="fa-sharp fa-regular" style="color: #ffffff;"></i> -->
                                             <span *ngIf="sortKey === 'transDate'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
                                           </th>
                                           <th class="text-white fw-bold" (click)="sortData('fundName')">
                                             Fund
-                                            <!-- <i *ngIf="sortKey === 'fundName'" [ngClass]="sortOrder === 'asc' ? 'fa-sort-up' : 'fa-sort-down'" class="fa-sharp fa-regular" style="color: #ffffff;"></i> -->
                                             <span *ngIf="sortKey === 'fundName'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
                                           </th>
                                           <th class="text-white fw-bold" (click)="sortData('transType')">
                                             Type 
-                                            <!-- <i *ngIf="sortKey === 'transType'" [ngClass]="sortOrder === 'asc' ? 'fa-sort-up' : 'fa-sort-down'" class="fa-sharp fa-regular" style="color: #ffffff;"></i> -->
                                             <span *ngIf="sortKey === 'transType'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
                                           </th>
                                           <th class="text-white fw-bold" (click)="sortData('units')">
                                             Units 
-                                            <!-- <i *ngIf="sortKey === 'units'" [ngClass]="sortOrder === 'asc' ? 'fa-sort-up' : 'fa-sort-down'" class="fa-sharp fa-regular" style="color: #ffffff;"></i> -->
                                             <span *ngIf="sortKey === 'units'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
                                           </th>
                                           <th class="text-white fw-bold" (click)="sortData('amount')">
                                             Amount 
-                                            <!-- <i *ngIf="sortKey === 'amount'" [ngClass]="sortOrder === 'asc' ? 'fa-sort-up' : 'fa-sort-down'" class="fa-sharp fa-regular" style="color: #ffffff;"></i> -->
                                             <span *ngIf="sortKey === 'amount'">{{ sortOrder === 'asc' ? '↑' : '↓' }}</span>
                                           </th>
                                         </tr>
@@ -278,7 +383,6 @@
                                             <td>{{ transaction.units }}</td>
                                             <td class="">{{ transaction.amount | number:'1.0-0' }}</td>
                                           </tr>
-                                          <!-- Add a new row if transType is "FTF" -->
                                           <tr *ngIf="transaction.transType === 'FTF'" class="">
                                             <td>{{ transaction.transDate }}</td>
                                             <td>{{ transaction.TO_FUND_CODE }}</td>
@@ -288,14 +392,12 @@
                                           </tr>
                                         </ng-container>
                                       </tbody>
-                                      
                                     </table>
-                                  </div>
-                                  
-                                
+                                </div>
+
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -303,17 +405,6 @@
 
 
     </main>
-
-
-
-
-
-    <!-- Footer2 (always visible) -->
-    <div class="row m-0">
-        <div class="col-12 p-0">
-        <app-footer2></app-footer2>
-        </div>
-    </div>
 
 
 
@@ -337,4 +428,13 @@
 
 
 
-</section>
+        
+        
+    </section>
+    
+<!-- Footer2 (always visible) -->
+<div class="row m-0">
+    <div class="col-12 p-0">
+    <app-footer2></app-footer2>
+    </div>
+</div>

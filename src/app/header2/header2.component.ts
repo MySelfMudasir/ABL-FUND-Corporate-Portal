@@ -34,6 +34,8 @@ export class Header2Component {
 
   ngOnInit(): void {
     this.accountTitle = sessionStorage.getItem('accountTitle') || '';
+    this.accountTitle = this.accountTitle.length > 35 ? this.accountTitle.substring(0, 35) + '...' : this.accountTitle;
+
   }
 
 

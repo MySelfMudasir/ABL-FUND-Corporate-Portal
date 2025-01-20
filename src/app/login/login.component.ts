@@ -64,7 +64,7 @@ export class LoginComponent {
       // Validators.minLength(5),
       // Validators.maxLength(5),
     ]),
-    userpwd: new FormControl('0', [
+    userpwd: new FormControl('1', [
       Validators.required,
       // Validators.minLength(6),
       // Validators.maxLength(6),

@@ -27,42 +27,18 @@
                                             </div>
                                             <div class="password-input-container">
                                                 <input placeholder="" class="form-control mb-2" type="text" value=""
-                                                    name="userid" formControlName="userid" required="" />
+                                                    name="folio" formControlName="folio" required="" />
                                                 <div class="text-danger text-right">
-                                                    @if(signup.controls['userid'].touched &&
-                                                    signup.controls['userid'].errors?.['required']) {
-                                                    <span>UserId Field is required.</span>
+                                                    @if(signup.controls['folio'].touched &&
+                                                    signup.controls['folio'].errors?.['required']) {
+                                                    <span>folio Field is required.</span>
                                                     }
-                                                    @else if (signup.controls['userid'].touched &&
-                                                    signup.controls['userid'].errors?.['minlength']) {
+                                                    @else if (signup.controls['folio'].touched &&
+                                                    signup.controls['folio'].errors?.['minlength']) {
                                                     <span>Minimum 5 characters required</span>
                                                     }
-                                                    @else if (signup.controls['userid'].touched &&
-                                                    signup.controls['userid'].errors?.['maxlength']){
-                                                    <span>Maximum 5 characters required</span>
-                                                    }
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="formgroup col-lg-8 col-10">
-                                            <div class="form-label-parent">
-                                                <label class="form-label" style="padding-left: 8px;">CNIC No:</label>
-                                                <span style="color: red;"> *</span>
-                                            </div>
-                                            <div class="password-input-container">
-                                                <input placeholder="" class="form-control mb-2" type="text" value=""
-                                                    name="cnic" formControlName="cnic" required="" />
-                                                <div class="text-danger text-right">
-                                                    @if(signup.controls['cnic'].touched &&
-                                                    signup.controls['cnic'].errors?.['required']) {
-                                                    <span>CNIC Field is required.</span>
-                                                    }
-                                                    @else if (signup.controls['cnic'].touched &&
-                                                    signup.controls['cnic'].errors?.['minlength']) {
-                                                    <span>Minimum 5 characters required</span>
-                                                    }
-                                                    @else if (signup.controls['cnic'].touched &&
-                                                    signup.controls['cnic'].errors?.['maxlength']){
+                                                    @else if (signup.controls['folio'].touched &&
+                                                    signup.controls['folio'].errors?.['maxlength']){
                                                     <span>Maximum 5 characters required</span>
                                                     }
                                                 </div>
@@ -75,18 +51,18 @@
                                             </div>
                                             <div class="tooltip-input-container">
                                                 <input placeholder="" class="form-control mb-2" type="text" value=""
-                                                    name="mobile" formControlName="mobile" required="" />
+                                                    name="mobileNumber" formControlName="mobileNumber" required="" />
                                                 <div class="text-danger text-right">
-                                                    @if(signup.controls['mobile'].touched &&
-                                                    signup.controls['mobile'].errors?.['required']) {
-                                                    <span>Mobile Field is required.</span>
+                                                    @if(signup.controls['mobileNumber'].touched &&
+                                                    signup.controls['mobileNumber'].errors?.['required']) {
+                                                    <span>mobileNumber Field is required.</span>
                                                     }
-                                                    @else if (signup.controls['mobile'].touched &&
-                                                    signup.controls['mobile'].errors?.['minlength']) {
+                                                    @else if (signup.controls['mobileNumber'].touched &&
+                                                    signup.controls['mobileNumber'].errors?.['minlength']) {
                                                     <span>Minimum 5 characters required</span>
                                                     }
-                                                    @else if (signup.controls['mobile'].touched &&
-                                                    signup.controls['mobile'].errors?.['maxlength']){
+                                                    @else if (signup.controls['mobileNumber'].touched &&
+                                                    signup.controls['mobileNumber'].errors?.['maxlength']){
                                                     <span>Maximum 5 characters required</span>
                                                     }
                                                 </div>

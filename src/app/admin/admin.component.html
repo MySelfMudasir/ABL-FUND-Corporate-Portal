@@ -1,13 +1,9 @@
-<section class="" style="background: #fff; height:auto;">
+<section class="" style="background: #fff; height: 95vh; display: flex; flex-direction: column;">
 
-
-
+    <!-- Header Section -->
     <app-header-2></app-header-2>
 
-
-
-    <main class="">
-
+    <main class="flex-grow-1">
 
         <div class="mt-1 mt-lg-3 container-fluid p-0">
             <div class="row m-0">
@@ -16,26 +12,20 @@
             </div>
         </div>
 
-
-
         <div class="row m-0">
-            <!-- <div class="col-md-3 ps-0">
-                <app-sidebar></app-sidebar>
-            </div> -->
             <div class="col-md-12 p-0">
                 <div class="main-content">
 
                     <form [formGroup]="adminForm">
                         <div class="row m-0" style="padding-bottom: 210px;">
-                            
                             <div class="col-12" style="padding-left: 15px; margin-top: 30px;">
                                 <form class="row g-3 m-0" [formGroup]="getUserByFolioForm">
                                     <div class="col-md-4 col-12">
-                                      <label for="folionumber" class="visually-hidden">Folio Number:</label>
-                                      <input type="text" class="form-control" placeholder="enter folio number" formControlName="folio" required >
+                                        <label for="folionumber" class="visually-hidden">Folio Number:</label>
+                                        <input type="text" class="form-control" placeholder="enter folio number" formControlName="folio" required >
                                     </div>
                                     <div class="col-md-2 col-12">
-                                      <button type="submit" class="btn btn-orange mb-3 w-100" (click)="onSearch()" >Search</button>
+                                        <button type="submit" class="btn btn-orange mb-3 w-100" (click)="onSearch()">Search</button>
                                     </div>
                                 </form>
                             </div>
@@ -49,30 +39,22 @@
 
                             <div class="row mx-0" *ngIf="isActive" style="margin-top: 20px;">
                                 <div class="col-md-6 col-12">
-                                    <label class="form-label">
-                                        Email:<span class="required-star"> *</span>
-                                    </label>
+                                    <label class="form-label">Email:<span class="required-star"> *</span></label>
                                     <input type="email" class="form-control" placeholder="enter email" formControlName="email" required >
                                 </div>
                                 <div class="col-md-6 col-12">
-                                    <label for="bs-datepicker-format" class="form-label">
-                                        Phone:<span class="required-star"> *</span>
-                                    </label>
+                                    <label for="bs-datepicker-format" class="form-label">Phone:<span class="required-star"> *</span></label>
                                     <input type="text" class="form-control" placeholder="enter mobile number" formControlName="mobile" required >
                                 </div>
                                 <div class="col-md-6 col-12 mt-3">
-                                    <label class="form-label">
-                                        Status:<span class="required-star"> *</span>
-                                    </label>
-                                    <select class="form-select w-100"
-                                        formControlName="status" required>
+                                    <label class="form-label">Status:<span class="required-star"> *</span></label>
+                                    <select class="form-select w-100" formControlName="status" required>
                                         <option value="" disabled selected>Select One</option>
                                         <option value="A">Active</option>
                                         <option value="N">Not Active</option>
                                     </select>
                                 </div>
-                                <div class="row justify-content-center m-0"
-                                    style="margin-top: 70px !important;">
+                                <div class="row justify-content-center m-0" style="margin-top: 70px !important;">
                                     <div class="col-md-3 col-12">
                                         <button type="submit" (click)="onSubmit()" class="btn btn-orange w-100">Submit</button>
                                     </div>
@@ -81,26 +63,17 @@
 
                         </div>
                     </form>
-
-
-
-
-
-
                 </div>
             </div>
         </div>
 
-
     </main>
 
-
-    <!-- Footer2 (always visible) -->
+    <!-- Footer (always at the bottom) -->
     <div class="row m-0">
         <div class="col-12 p-0">
-        <app-footer2></app-footer2>
+            <app-footer2></app-footer2>
         </div>
     </div>
-
 
 </section>

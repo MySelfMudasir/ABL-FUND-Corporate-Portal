@@ -34,10 +34,8 @@ export class AdminLoginComponent {
   ngOnInit(): void {
 
     if (this.isAuthenticated()) {
-      this.router.navigate(['admin']);
+      this.router.navigate(['admin-login']);
     }
-
-
 
   }
   
@@ -51,12 +49,12 @@ export class AdminLoginComponent {
 
 
   login: FormGroup = new FormGroup({
-    adminid: new FormControl('admin', [
+    adminid: new FormControl('', [
       Validators.required,
       // Validators.minLength(5),
       // Validators.maxLength(5),
     ]),
-    adminpwd: new FormControl('admin123', [
+    adminpwd: new FormControl('', [
       Validators.required,
       // Validators.minLength(6),
       // Validators.maxLength(6),

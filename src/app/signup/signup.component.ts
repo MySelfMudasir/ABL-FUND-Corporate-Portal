@@ -18,6 +18,7 @@ import { StateService } from '../service/state.service';
   styleUrl: './signup.component.css'
 })
 export class SignupComponent {
+  data: any = {}
   
 
   constructor(private apiService: ApiService, private authService: AuthService, private router: Router, private stateService: StateService) { }
@@ -29,22 +30,17 @@ export class SignupComponent {
 
 
   signup: FormGroup = new FormGroup({
-    userid: new FormControl('ABLAMC030908', [
+    folio: new FormControl('7', [
       Validators.required,
       // Validators.minLength(5),
       // Validators.maxLength(5),
     ]),
-    cnic: new FormControl('3100000000000000000', [
+    email: new FormControl('mudasirmaqbool7777@gmail.com', [
       Validators.required,
       // Validators.minLength(5),
       // Validators.maxLength(5),
     ]),
-    mobile: new FormControl('03000000000', [
-      Validators.required,
-      // Validators.minLength(5),
-      // Validators.maxLength(5),
-    ]),
-    email: new FormControl('admin@gmail.com', [
+    mobileNumber: new FormControl('03068059557', [
       Validators.required,
       // Validators.minLength(5),
       // Validators.maxLength(5),
@@ -55,21 +51,38 @@ export class SignupComponent {
 
 
   onSubmit() {
-    this.SignUp();
-
-    // if (this.signup.valid) {
-    //   console.log('Form data:', this.signup.value);
-    //   this.loadingAlert('Processing your request...', 'Loading...'); // Pass a message to the loading alert
-    //   this.SignUp();
-    // } else {
-    //   this.showErrorAlert('All Fields are Required.');
-    // }
+    if (this.signup.valid) {
+      console.log('Form data:', this.signup.value);
+      this.loadingAlert('Processing your request...', 'Loading...'); // Pass a message to the loading alert
+      this.SignUp(); 
+    } else {
+      this.showErrorAlert('All Fields are Required.');
+    }
   }
 
 
 
   SignUp() {
-    this.router.navigate(['/confirm-otp']); // Redirect to confirm otp
+    this.apiService.Signup(this.signup.value).subscribe(
+    (response: any) => {
+      if (response.responseCode == "SUCCESS") {
+        console.log('Signup Response:', response);
+        this.data = JSON.stringify(this.signup.value)
+        console.log(this.data);
+        sessionStorage.setItem('SignupUserData', this.data);
+        setTimeout(() => {
+          Swal.close();
+          this.router.navigate(['/confirm-otp']); // Redirect to confirm otp
+        }, 1000);
+      }
+      else{
+        this.showErrorAlert('Invalid User ID or Password');
+      }
+    },
+    (error: any) => {
+      console.error('Error posting data', error);
+      this.showErrorAlert(error.message);
+    });
   }
 
 

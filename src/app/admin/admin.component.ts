@@ -36,15 +36,15 @@ export class AdminComponent {
 
 
   getUserByFolioForm: FormGroup = new FormGroup({
-    folio: new FormControl('7', Validators.required)
+    folio: new FormControl('', Validators.required)
   });
 
 
 
   adminForm: FormGroup = new FormGroup({
-    email: new FormControl('mudasir@yahoo.com', Validators.required),
-    mobile: new FormControl('923006191888', Validators.required),
-    status: new FormControl('A', Validators.required)
+    email: new FormControl('', Validators.required),
+    mobile: new FormControl('', Validators.required),
+    status: new FormControl('', Validators.required)
   });
 
 

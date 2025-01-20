@@ -1,23 +1,38 @@
 
 
 
+section {
+    background: #fff;
+    min-height: 77.5vh;
+    display: flex;
+    flex-direction: column;
+}
 
+main {
+    flex-grow: 1;
+    overflow: auto; /* Ensure content scrolls if needed */
+}
 
 .AuthenticationBody {
     background: url(/assets/images/LoginImgBg.jpg) no-repeat;
     background-position: top;
     background-size: cover;
     padding: .5rem !important;
+    height: 420px !important;
     border-radius: 1.6rem;
-    width: 90%;
-    height: auto;
 }
 
+
+.card {
+    border-radius: 25px;
+    height: 100%;
+}
 
 
 .btn {
     color: white;
     border: none;
+    padding: 10px 20px;
     border-radius: 10px;
     font-size: 15px;
     box-shadow: 0 6px 12px -2px rgba(50,50,93,.25),0 3px 7px -3px rgba(0,0,0,.3)!important;

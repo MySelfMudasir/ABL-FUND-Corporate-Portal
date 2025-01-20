@@ -32,6 +32,7 @@ header .container {
 .account-title {
     display: inline-block;     /* Ensure the element can have width */
     max-width: 100%;           /* Limit the width to prevent overflow */
+    width: 200px;              /* Define a fixed width */
     white-space: nowrap;       /* Prevent the text from wrapping to the next line */
     overflow: hidden;          /* Hide overflowed text */
     text-overflow: ellipsis;   /* Add ellipsis (...) when the text overflows */

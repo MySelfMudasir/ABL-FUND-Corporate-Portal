@@ -1,11 +1,11 @@
-<section class="" style="background: #fff; height: auto;">
+<section class="" style="background: #fff; height: 95vh;display: flex; flex-direction: column;">
 
 
     <app-header></app-header>
 
 
 
-    <main class="mb-3">
+    <main class="mb-3 flex-grow-1">
         <div class="d-flex align-items-center justify-content-center h-100 paddingdiv" style="padding: 15px;">
 
             <div class="AuthenticationBody">
@@ -32,7 +32,7 @@
                                                     <div class="text-danger text-right">
                                                         @if(login.controls['adminid'].touched &&
                                                         login.controls['adminid'].errors?.['required']) {
-                                                        <span>adminid Field is required.</span>
+                                                        <span>admin id Field is required.</span>
                                                         }
                                                         @else if (login.controls['adminid'].touched &&
                                                         login.controls['adminid'].errors?.['minlength']) {
@@ -90,15 +90,17 @@
                                         </div>
 
                                         <div class="row my-3">
-                                            <div class="formgroup d-grid mb-md-0 mb-3 col-md-6 col-12">
-                                                <button class="btn fs-lg-6 btn-blue" type="button">CREATE NEW ACCOUNT</button>
-                                            </div>
-                                            <div class="formgroup d-grid col-md-6 col-12">
+                                            <!-- <div class="formgroup d-grid mb-md-0 mb-3 col-md-12 col-12 text-center">
+                                                <a href="" routerLink="/signup">
+                                                    <button class="btn fs-lg-6 btn-blue" type="button">CREATE NEW ACCOUNT</button>
+                                                </a>
+                                            </div> -->
+                                            <!-- <div class="formgroup d-grid col-md-6 col-12">
                                                 <a class="" href="" routerLink="/signup">
                                                     <button class="btn fs-lg-6 btn-orange w-100" type="button">GET ONLINE
                                                         ACCESS</button>
                                                 </a>
-                                            </div>
+                                            </div> -->
                                         </div>
 
                                     </form>

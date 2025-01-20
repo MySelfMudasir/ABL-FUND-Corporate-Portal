@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StateService } from '../service/state.service';
-import { SidebarComponent } from '../sidebar/sidebar.component';
 import { MainModule } from '../main/main.module';
 import { HttpHeaders } from '@angular/common/http';
 import { ApiService } from '../service/api.service';
@@ -19,8 +18,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './portfolioAllocationDetails.component.css'
 })
 export class PortfolioAllocationDetailsComponent implements OnInit {
-  totalBalanceAmount: string = '';
+  totalBalanceAmount: number = 0;
   portfolioAllocation: any[] = [];
+  originalPortfolioAllocation: any[] = [];
   sortKey = ''; // Default sorting key
   sortOrder = 'asc'; // Default ascending order
 
@@ -49,14 +49,16 @@ export class PortfolioAllocationDetailsComponent implements OnInit {
         console.log('GetPortfolioSummary Response:', response);
         if (response) {
           console.log(response);
-          
           setTimeout(() => {
             this.totalBalanceAmount = (response.totalBalanceAmount);
             this.portfolioAllocation = response.portfolioAllocation;
+            this.originalPortfolioAllocation = response.portfolioAllocation;
             Swal.close();
           }, 1000);
         }
         else{
+          this.portfolioAllocation = [];
+          this.totalBalanceAmount = 0.00;
           this.loadingAlert('No Response', 'The server did not return any response.');
         }
       },
@@ -99,6 +101,17 @@ export class PortfolioAllocationDetailsComponent implements OnInit {
     });
   }
 
+
+  filterPortfolio(event: any) {
+    const searchTerm = event.target.value.toLowerCase();
+    this.portfolioAllocation = [...this.originalPortfolioAllocation]; // Reload the original data if the search term is empty
+    this.portfolioAllocation = this.portfolioAllocation.filter(allocation => 
+      allocation.fundName.toLowerCase().includes(searchTerm)
+    );
+    if(searchTerm === ''){
+      this.portfolioAllocation = this.originalPortfolioAllocation;
+    }
+  }
 
 
 

@@ -37,6 +37,18 @@ export class ApiService {
   }
 
 
+  Signup(data: any): Observable<any> {
+    const completeUrl = `${this.baseUrl}/api/user/generateOTP`;
+    return this.http.post<any>(completeUrl, data);
+  }
+
+
+  VerifyOtpAndRegisterUser(data: any): Observable<any> {
+    const completeUrl = `${this.baseUrl}/api/user/verifyotpandregistercorpuser`;
+    return this.http.post<any>(completeUrl, data);
+  }
+
+
 
   GetPortfolioSummary(data: any, headers: HttpHeaders): Observable<any> {
     const completeUrl = `${this.baseUrl}/api/account/GetPortfolioSummary`;

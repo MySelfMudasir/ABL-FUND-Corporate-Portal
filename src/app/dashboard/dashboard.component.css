@@ -4,8 +4,21 @@
 }
 
 
+section {
+    background: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+    overflow: auto; /* Ensure content scrolls if needed */
+}
+
+
 .main-content {
-    padding: 40px;
+    padding: 30px 0px 0px 0px;
 }
 
 .card {
@@ -131,7 +144,7 @@ ul li {
 }
 
 .investment-value-amount {
-    font-size: 16px;
+    font-size: 14px;
     color: #000000 !important; /* Dark blue color for amount */
 }
 
@@ -156,18 +169,22 @@ ul li {
 .inprocess_toggle {
     background-color: #f06a25; 
     color: white; 
-    border-radius: 0 12px 12px 0; 
+    border-radius: 12px 0 0 12px;
     padding: 6px 12px; 
     font-weight: bold; 
     border: none;
 }
 .executed_toggle {
-    background-color: #22417f; 
-    color: white; 
-    border-radius: 12px 0 0 12px; 
-    padding: 6px 12px; 
-    font-weight: bold; 
+    background-color: #22417f;
+    color: white;
+    border-radius: 0px 12px 12px 0px;
+    padding: 6px 12px;
+    font-weight: bold;
     border: none;
+    -webkit-border-radius: 0px 12px 12px 0px;
+    -moz-border-radius: 0px 12px 12px 0px;
+    -ms-border-radius: 0px 12px 12px 0px;
+    -o-border-radius: 0px 12px 12px 0px;
 }
 
 .table-head-title{

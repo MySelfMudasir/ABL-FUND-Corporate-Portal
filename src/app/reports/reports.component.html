@@ -1,4 +1,4 @@
-<section class="" style="background: #fff; height:auto;">
+<section class="" style="">
 
 
 
@@ -36,8 +36,6 @@
                         </div>
                     </div> -->
 
-
-
                     <form [formGroup]="reportForm">
                         <div class="row m-0" style="padding-bottom: 210px;">
                             <div class="col-md-6 col-12" style="padding-left: 15px; margin-top: 30px;">
@@ -61,14 +59,14 @@
                                     <label for="bs-datepicker-basic" class="form-label">
                                         Date From:<span class="required-star"> *</span>
                                     </label>
-                                    <input type="date" id="bs-datepicker-basic" placeholder="MM/DD/YYYY"
+                                    <input type="date" id="bs-datepicker-basic" placeholder="DD/MM/YYYY"
                                         class="form-control" formControlName="fromDate" [min]="minDate" [max]="maxDate" required />
                                 </div>
                                 <div class="col-md-6 col-12" style="margin-top: 50px;">
                                     <label for="bs-datepicker-format" class="form-label">
                                         Date To:<span class="required-star"> *</span>
                                     </label>
-                                    <input type="date" id="bs-datepicker-format" placeholder="MM/DD/YYYY"
+                                    <input type="date" id="bs-datepicker-format" placeholder="DD/MM/YYYY"
                                         class="form-control" formControlName="toDate" [min]="minDate" [max]="maxDate" required />
                                 </div>
                                 <!-- <div class="col-md-6 col-12" style="margin-top: 50px;">
@@ -106,12 +104,6 @@
                             </div>
                         </div>
                     </form>
-
-
-
-
-
-
                 </div>
             </div>
         </div>
@@ -119,6 +111,9 @@
 
     </main>
 
+    
+    
+</section>
 
     <!-- Footer2 (always visible) -->
     <div class="row m-0">
@@ -126,6 +121,3 @@
         <app-footer2></app-footer2>
         </div>
     </div>
-
-
-</section>
