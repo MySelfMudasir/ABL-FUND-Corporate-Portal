@@ -1,10 +1,20 @@
 
 
+section {
+    background: #fff;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
 
+main {
+    flex-grow: 1;
+    overflow: auto; /* Ensure content scrolls if needed */
+}
 
 
 .AuthenticationBody {
-    background: url(/assets/images/LoginImgBg.jpg) no-repeat;
+    background: url(/corporateportal/assets/images/LoginImgBg.jpg) no-repeat;
     background-position: top;
     background-size: cover;
     padding: .5rem !important;

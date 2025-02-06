@@ -30,17 +30,17 @@ export class SignupComponent {
 
 
   signup: FormGroup = new FormGroup({
-    folio: new FormControl('7', [
+    folio: new FormControl('', [
       Validators.required,
       // Validators.minLength(5),
       // Validators.maxLength(5),
     ]),
-    email: new FormControl('mudasirmaqbool7777@gmail.com', [
+    email: new FormControl('', [
       Validators.required,
       // Validators.minLength(5),
       // Validators.maxLength(5),
     ]),
-    mobileNumber: new FormControl('03068059557', [
+    mobileNumber: new FormControl('', [
       Validators.required,
       // Validators.minLength(5),
       // Validators.maxLength(5),
@@ -81,7 +81,7 @@ export class SignupComponent {
     },
     (error: any) => {
       console.error('Error posting data', error);
-      this.showErrorAlert(error.message);
+      this.showErrorAlert(error.statusText);
     });
   }
 

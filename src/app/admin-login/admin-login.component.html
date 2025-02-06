@@ -1,11 +1,11 @@
-<section class="" style="background: #fff; height: 95vh;display: flex; flex-direction: column;">
+<section class="">
 
 
     <app-header></app-header>
 
 
 
-    <main class="mb-3 flex-grow-1">
+    <main class="mb-3">
         <div class="d-flex align-items-center justify-content-center h-100 paddingdiv" style="padding: 15px;">
 
             <div class="AuthenticationBody">
@@ -28,18 +28,18 @@
                                             </div>
                                             <div class="password-input-container">
                                                 <input placeholder="" class="form-control mb-2" type="text" value=""
-                                                    name="adminid" formControlName="adminid" required="" />
+                                                    name="adminId" formControlName="adminId" required="" />
                                                     <div class="text-danger text-right">
-                                                        @if(login.controls['adminid'].touched &&
-                                                        login.controls['adminid'].errors?.['required']) {
+                                                        @if(login.controls['adminId'].touched &&
+                                                        login.controls['adminId'].errors?.['required']) {
                                                         <span>admin id Field is required.</span>
                                                         }
-                                                        @else if (login.controls['adminid'].touched &&
-                                                        login.controls['adminid'].errors?.['minlength']) {
+                                                        @else if (login.controls['adminId'].touched &&
+                                                        login.controls['adminId'].errors?.['minlength']) {
                                                         <span>Minimum 5 characters required</span>
                                                         }
-                                                        @else if (login.controls['adminid'].touched &&
-                                                        login.controls['adminid'].errors?.['maxlength']){
+                                                        @else if (login.controls['adminId'].touched &&
+                                                        login.controls['adminId'].errors?.['maxlength']){
                                                         <span>Maximum 5 characters required</span>
                                                         }
                                                     </div>
@@ -53,7 +53,7 @@
                                                     <input [type]="isCurrentPasswordVisible ? 'text' : 'password'"
                                                         class="form-control" id="basic-default-password32"
                                                         placeholder="" aria-describedby="basic-default-password"
-                                                        name="adminpwd" formControlName="adminpwd" required="" />
+                                                        name="adminPassword" formControlName="adminPassword" required="" />
                                                     <span class="input-group-text cursor-pointer"
                                                         (click)="toggleCurrentPasswordVisibility()"
                                                         id="basic-default-password">
@@ -62,16 +62,16 @@
                                                     </span>
                                                 </div>
                                                 <div class="text-danger text-right">
-                                                    @if(login.controls['adminpwd'].touched &&
-                                                    login.controls['adminpwd'].errors?.['required']) {
+                                                    @if(login.controls['adminPassword'].touched &&
+                                                    login.controls['adminPassword'].errors?.['required']) {
                                                     <span>Password  Field is required.</span>
                                                     }
-                                                    @else if (login.controls['adminpwd'].touched &&
-                                                    login.controls['adminpwd'].errors?.['minlength']) {
+                                                    @else if (login.controls['adminPassword'].touched &&
+                                                    login.controls['adminPassword'].errors?.['minlength']) {
                                                     <span>Minimum 5 characters required</span>
                                                     }
-                                                    @else if (login.controls['adminpwd'].touched &&
-                                                    login.controls['adminpwd'].errors?.['maxlength']){
+                                                    @else if (login.controls['adminPassword'].touched &&
+                                                    login.controls['adminPassword'].errors?.['maxlength']){
                                                     <span>Maximum 5 characters required</span>
                                                     }
                                                 </div>
@@ -80,7 +80,7 @@
 
 
                                         <div class="formgroup gap-2 pt-3 d-grid justify-content-end col-lg-8 col-11">
-                                            <a class="" href="/forgetpassword"
+                                            <a class="" href="#"
                                                 style="width: fit-content; color: #22417f; text-decoration: underline;">
                                                 Forgot Password</a>
                                         </div>
@@ -113,6 +113,9 @@
 
         </div>
     </main>
+    
+    
+</section>
 
 
     <!-- Footer (always visible) -->
@@ -121,6 +124,3 @@
         <app-footer></app-footer>
         </div>
     </div>
-
-
-</section>

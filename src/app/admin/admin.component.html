@@ -1,9 +1,9 @@
-<section class="" style="background: #fff; height: 95vh; display: flex; flex-direction: column;">
+<section class="">
 
     <!-- Header Section -->
     <app-header-2></app-header-2>
 
-    <main class="flex-grow-1">
+    <main class="">
 
         <div class="mt-1 mt-lg-3 container-fluid p-0">
             <div class="row m-0">
@@ -30,7 +30,7 @@
                                 </form>
                             </div>
 
-                            <div class="row mx-0" style="margin-top: 10px;">
+                            <div class="row mx-0" *ngIf="isActive" style="margin-top: 10px;">
                                 <div class="col-md-4 col-12" *ngFor="let entry of UserByFolio" style="margin-top: 10px;">
                                     <label class="form-label">{{ entry[0] | uppercase }}:<span class="required-star"> *</span></label>
                                     <input type="text" class="form-control" [value]="entry[1]" readonly required>
@@ -40,23 +40,23 @@
                             <div class="row mx-0" *ngIf="isActive" style="margin-top: 20px;">
                                 <div class="col-md-6 col-12">
                                     <label class="form-label">Email:<span class="required-star"> *</span></label>
-                                    <input type="email" class="form-control" placeholder="enter email" formControlName="email" required >
+                                    <input type="email" class="form-control" placeholder="enter email" formControlName="email" [(ngModel)]="email" required >
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <label for="bs-datepicker-format" class="form-label">Phone:<span class="required-star"> *</span></label>
-                                    <input type="text" class="form-control" placeholder="enter mobile number" formControlName="mobile" required >
+                                    <input type="text" class="form-control" placeholder="enter mobile number" formControlName="mobile" [(ngModel)]="mobile" required >
                                 </div>
                                 <div class="col-md-6 col-12 mt-3">
                                     <label class="form-label">Status:<span class="required-star"> *</span></label>
                                     <select class="form-select w-100" formControlName="status" required>
-                                        <option value="" disabled selected>Select One</option>
-                                        <option value="A">Active</option>
-                                        <option value="N">Not Active</option>
+                                        <option value="" disabled>Select One</option>
+                                        <option value="A" [selected]="status === '1'">Active</option>
+                                        <option value="N" [selected]="status === '0'">Not Active</option>
                                     </select>
                                 </div>
                                 <div class="row justify-content-center m-0" style="margin-top: 70px !important;">
                                     <div class="col-md-3 col-12">
-                                        <button type="submit" (click)="onSubmit()" class="btn btn-orange w-100">Submit</button>
+                                        <button type="submit" (click)="onSubmit()" class="btn btn-orange w-100">Update</button>
                                     </div>
                                 </div>
                             </div>
@@ -68,6 +68,9 @@
         </div>
 
     </main>
+    
+</section>
+
 
     <!-- Footer (always at the bottom) -->
     <div class="row m-0">
@@ -75,5 +78,3 @@
             <app-footer2></app-footer2>
         </div>
     </div>
-
-</section>

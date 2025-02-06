@@ -40,7 +40,8 @@ export class Header2Component {
 
 
   logout() {
-    this.authService.logout();
+    const currentRoute = this.router.url;
+    this.authService.logout(currentRoute);
   }
 
 }

@@ -48,7 +48,7 @@
                                     <option value="" disabled selected>Select One</option>
                                     <option value="Account Statement">Account Statement</option>
                                     <option value="CGT Certificate">CGT Certificate</option>
-                                    <option value="WHT Certificate">WHT Certificate</option>
+                                    <option value="WHT Certificate">WHT on Dividend Certificate</option>
                                 </select>
                             </div>
 
@@ -82,14 +82,14 @@
                                 </div> -->
 
                                 <!-- Conditionally show the Funds Name field based on the selected Report Name -->
-                                <div class="col-md-6 col-12"
+                                <div class="col-md-6 col-12" *ngIf="isActive2"
                                     style="margin-top: 50px;">
                                     <label class="form-label"
                                         style="font-size: 14px; font-weight: 500; margin-bottom: 10px;">
                                         Funds Name:<span class="required-star"> *</span>
                                     </label>
                                     <select class="form-select w-100" data-style="btn-default"
-                                        formControlName="fundCode" required>
+                                        formControlName="fundCode">
                                         <option value="" disabled selected>Select One</option>
                                         <option *ngFor="let fund of fundsNames" value="{{fund.fundCode}}">{{fund.fundName}}</option>
                                     </select>

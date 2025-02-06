@@ -1,17 +1,15 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
-
 import { routes } from './app.routes';
 import { provideCharts } from 'ng2-charts';
-import { provideHttpClient } from '@angular/common/http';
-
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { tokenInterceptor } from './interceptor/token.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes),
-    provideCharts(),  // Provide the ng2-charts configuration
-    provideHttpClient(),
+    provideCharts(),
+    provideHttpClient(withInterceptors([tokenInterceptor])),   
   ]
 };

@@ -64,7 +64,7 @@ export class LoginComponent {
       // Validators.minLength(5),
       // Validators.maxLength(5),
     ]),
-    userpwd: new FormControl('1', [
+    userpwd: new FormControl('password11', [
       Validators.required,
       // Validators.minLength(6),
       // Validators.maxLength(6),
@@ -79,23 +79,21 @@ export class LoginComponent {
     if (this.login.valid) {
       console.log('Form data:', this.login.value);
       this.loadingAlert('Processing your request...', 'Loading...'); // Pass a message to the loading alert
-      this.consumerTokenPost();
+      this.generateTokenPost();
     } else {
       this.showErrorAlert('All Fields are Required.');
     }
   }
 
 
-  consumerTokenPost() {
+  generateTokenPost() {
     const userId = 'AmcServiceConsumer'
     const userPwd = 'AmcServiceConsumer@12345678';
-
     const tokenPayload = { userId, userPwd };
     // console.log('Data being posted:', tokenPayload);
-    this.apiService.consumerTokenPost(tokenPayload).subscribe(
+    this.apiService.generateTokenPost(tokenPayload).subscribe(
       (response: any) => {
-        console.log(response);
-        
+        // console.log(response);
         if (response) 
         {
           this.data = response;
@@ -116,7 +114,7 @@ export class LoginComponent {
       },
       (error: any) => {
         console.error('Error posting data', error);
-        this.showErrorAlert(error.message);
+        this.showErrorAlert(error.statusText);
       });
   }
 
@@ -125,13 +123,7 @@ export class LoginComponent {
 
 
   AuthenticateUser() {
-    // const globalAuthToken = sessionStorage.getItem('globalAuthToken');
-    const globalAuthToken = this.stateService.getGlobalAuthToken();
-    const headers = new HttpHeaders({
-      'Authorization': `Mbs645 ${globalAuthToken}`
-    });
-    
-    this.apiService.AuthenticateUser(this.login.value, headers).subscribe(
+    this.apiService.AuthenticateUser(this.login.value).subscribe(
       (response: any) => {
         if (response.responseCode == "SUCCESS") {
           // console.log('Authentication Response:', response);
@@ -150,7 +142,7 @@ export class LoginComponent {
       },
       (error: any) => {
         console.error('Error posting data', error);
-        this.showErrorAlert(error.message);
+        this.showErrorAlert(error.statusText);
       });
   }
 

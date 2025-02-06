@@ -38,7 +38,8 @@ export class SidebarComponent {
 
   logout() {
     this.closeModal();
-    this.authService.logout();
+    const currentRoute = this.router.url;
+    this.authService.logout(currentRoute);
   }
 
   openModal(): void {

@@ -16,6 +16,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ConfirmOTPComponent } from './confirm-otp/confirm-otp.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { SuperAdminComponent } from './super-admin/super-admin.component';
 
 export const routes: Routes = [
 
@@ -28,20 +29,20 @@ export const routes: Routes = [
     { path: 'confirm-otp', component: ConfirmOTPComponent}, // Guard for login page
     { path: 'login', component: LoginComponent, canActivate: [AuthGuard] }, // Guard for login page
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-    { path: 'admin', component: AdminComponent },
     { path: 'admin-login', component: AdminLoginComponent },
+    { path: 'admin', component: AdminComponent },
+    { path: 'super-admin', component: SuperAdminComponent },
     { path: 'portfolioAllocationDetails', component: PortfolioAllocationDetailsComponent, canActivate: [AuthGuard] },
     // { path: 'investor-profile', component: InvestorProfileComponent, canActivate: [AuthGuard] },
     // { path: 'investment', component: InvestmentComponent, canActivate: [AuthGuard] },
     // { path: 'redemption', component: RedemptionComponent, canActivate: [AuthGuard] },
     // { path: 'conversion', component: ConversionComponent, canActivate: [AuthGuard] },
-    { path: 'reports', component: ReportsComponent },
-    { path: 'change-password', component: ChangePasswordComponent,},
+    { path: 'reports', component: ReportsComponent, canActivate: [AuthGuard]},
+    { path: 'change-password', component: ChangePasswordComponent, canActivate: [AuthGuard]},
     { path: 'logout', component: LogoutComponent },
 
     // Wildcard route
-    { path: '', redirectTo: '/home', pathMatch: 'full' }, // Your home route
-    { path: '**', redirectTo: '/home' } // Wildcard route
+    { path: '**', redirectTo: 'login' }
 
 
 ];

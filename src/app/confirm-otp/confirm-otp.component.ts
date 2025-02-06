@@ -105,7 +105,7 @@ export class ConfirmOTPComponent {
         },
         (error: any) => {
           console.error('Error posting data', error);
-          this.showErrorAlert(error.message);
+          this.showErrorAlert(error.statusText);
         });
     } else {
       console.error('No SignupUserData found in sessionStorage');
@@ -138,7 +138,7 @@ export class ConfirmOTPComponent {
     },
     (error: any) => {
       console.error('Error posting data', error);
-      this.showErrorAlert(error.message);
+      this.showErrorAlert(error.statusText);
     });
   }
 

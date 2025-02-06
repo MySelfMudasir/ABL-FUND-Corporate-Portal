@@ -49,12 +49,12 @@ export class AdminLoginComponent {
 
 
   login: FormGroup = new FormGroup({
-    adminid: new FormControl('', [
+    adminId: new FormControl('Super', [
       Validators.required,
       // Validators.minLength(5),
       // Validators.maxLength(5),
     ]),
-    adminpwd: new FormControl('', [
+    adminPassword: new FormControl('Superadmin', [
       Validators.required,
       // Validators.minLength(6),
       // Validators.maxLength(6),
@@ -69,22 +69,21 @@ export class AdminLoginComponent {
     if (this.login.valid) {
       console.log('Form data:', this.login.value);
       this.loadingAlert('Processing your request...', 'Loading...'); // Pass a message to the loading alert
-      this.AuthenticateAdmin();
+      this.generateTokenPost();
     } else {
       this.showErrorAlert('All Fields are Required.');
     }
   }
 
 
-  consumerTokenPost() {
+  generateTokenPost() {
     const userId = 'AmcServiceConsumer'
     const userPwd = 'AmcServiceConsumer@12345678';
-
     const tokenPayload = { userId, userPwd };
     // console.log('Data being posted:', tokenPayload);
-    this.apiService.consumerTokenPost(tokenPayload).subscribe(
+    this.apiService.generateTokenPost(tokenPayload).subscribe(
       (response: any) => {
-        console.log(response);
+        // console.log(response);
         if (response) 
         {
           this.data = response;
@@ -105,7 +104,7 @@ export class AdminLoginComponent {
       },
       (error: any) => {
         console.error('Error posting data', error);
-        this.showErrorAlert(error.message);
+        this.showErrorAlert(error.statusText);
       });
   }
 
@@ -114,47 +113,59 @@ export class AdminLoginComponent {
 
 
   AuthenticateAdmin() {
-    // const globalAuthToken = sessionStorage.getItem('globalAuthToken');
-    // const globalAuthToken = this.stateService.getGlobalAuthToken();
-    // const headers = new HttpHeaders({
-    //   'Authorization': `Mbs645 ${globalAuthToken}`
-    // });
-
-    if(this.login.value.adminid == 'admin' && this.login.value.adminpwd == 'admin123')
-    {
-      this.stateService.setAccountTitle('Admin');
-      this.stateService.setAccountNumber('Admin');
-      this.stateService.setUserId('Admin');
-      setTimeout(() => {
-        Swal.close();
-        this.router.navigate(['admin']); // Redirect to dashboard
-      }, 1000);
-    }
+    // if(this.login.value.adminid == 'Admin' && this.login.value.adminpwd == 'Admin123')
+    // {
+    //   this.stateService.setAccountTitle('Admin');
+    //   this.stateService.setAccountNumber('Admin');
+    //   this.stateService.setUserId('Admin');
+    //   setTimeout(() => {
+    //     Swal.close();
+    //     this.router.navigate(['admin']); // Redirect to dashboard
+    //   }, 1000);
+    // }
+    // if(this.login.value.adminid == 'Super' && this.login.value.adminpwd == 'Superadmin')
+    // {
+    //   this.stateService.setAccountTitle('Admin');
+    //   this.stateService.setAccountNumber('Admin');
+    //   this.stateService.setUserId('Admin');
+    //   setTimeout(() => {
+    //     Swal.close();
+    //     this.router.navigate(['super-admin']); // Redirect to dashboard
+    //   }, 1000);
+    // }
     
-    // this.apiService.AuthenticateAdmin(this.login.value, headers).subscribe(
-    //   (response: any) => {
-    //     if (response == "SUCCESS") {
-    //       // console.log('Authentication Response:', response);
-    //       this.stateService.setAccountTitle(response.accountList[0].accountTitle);
-    //       this.stateService.setAccountNumber(response.accountList[0].accountNumber);
-    //       const capitalizedUserId = response.accountList[0].userId.toUpperCase();
-    //       this.stateService.setUserId(capitalizedUserId);
-    //       setTimeout(() => {
-    //         Swal.close();
-    //         this.router.navigate(['dashboard']); // Redirect to dashboard
-    //       }, 1000);
-    //     }
-    //     else{
-    //       this.showErrorAlert('Invalid User ID or Password');
-    //     }
-    //   },
-    //   (error: any) => {
-    //     console.error('Error posting data', error);
-    //     this.showErrorAlert(error.message);
-    //   });
+    
+    this.apiService.AuthenticateAdmin(this.login.value).subscribe(
+      (response: any) => {
+        console.log('Authentication Response:', response);
+        
+        if (response.responseCode == "SUCCESS") {
+          if(response.responseMessage == "Admin Login Success. Role: I"){
+              this.stateService.setAccountTitle('Admin');
+              this.stateService.setAccountNumber('Admin');
+              setTimeout(() => {
+                Swal.close();
+                this.router.navigate(['admin']);
+              }, 1000);
+          }
+          if(response.responseMessage == "Admin Login Success. Role: U"){
+              this.stateService.setAccountTitle('Super Admin');
+              this.stateService.setAccountNumber('Super Admin');
+              setTimeout(() => {
+                Swal.close();
+                this.router.navigate(['super-admin']);
+              }, 1000);
+          }
+        }
+        else{
+          this.showErrorAlert('Invalid User ID or Password');
+        }
+      },
+      (error: any) => {
+        console.error('Error posting data', error);
+        this.showErrorAlert(error.statusText);
+      });
   }
-
-
 
 
 
@@ -163,8 +174,7 @@ export class AdminLoginComponent {
   }
 
 
-
-
+  
   loadingAlert(swalText: string, swalTitle: string) {
     const style = document.createElement('style'); style.innerHTML = `div.swal2-icon { border: none !important;}`;
     document.head.appendChild(style);

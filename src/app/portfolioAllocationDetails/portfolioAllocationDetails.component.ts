@@ -24,6 +24,17 @@ export class PortfolioAllocationDetailsComponent implements OnInit {
   sortKey = ''; // Default sorting key
   sortOrder = 'asc'; // Default ascending order
 
+  // Sample fund list
+  fundList: string[] = [];
+
+  // Filtered portfolio data (initially all data)
+  filteredPortfolio = [...this.portfolioAllocation];
+
+  // Unique fund names for dropdown (will be calculated dynamically)
+  uniqueFunds: string[] = [];
+
+
+
   constructor(private apiService: ApiService, private stateService: StateService, private router: Router) {}
 
   ngOnInit() {
@@ -35,16 +46,11 @@ export class PortfolioAllocationDetailsComponent implements OnInit {
 
 
   portfolioAllocationDetail() {
-    const globalAuthToken = sessionStorage.getItem('globalAuthToken');
-    const headers = new HttpHeaders({
-      'Authorization': `Mbs645 ${globalAuthToken}`
-    });
-    
     const userid = this.stateService.getUserId();
     const folionumber = this.stateService.getAccountNumber();
     const portfolioSummaryPayload = { userid, folionumber };
 
-    this.apiService.GetPortfolioAllocationDetail(portfolioSummaryPayload, headers).subscribe(
+    this.apiService.GetPortfolioAllocationDetail(portfolioSummaryPayload).subscribe(
       (response: any) => {
         console.log('GetPortfolioSummary Response:', response);
         if (response) {
@@ -53,6 +59,7 @@ export class PortfolioAllocationDetailsComponent implements OnInit {
             this.totalBalanceAmount = (response.totalBalanceAmount);
             this.portfolioAllocation = response.portfolioAllocation;
             this.originalPortfolioAllocation = response.portfolioAllocation;
+            this.fundList = [...new Set(this.portfolioAllocation.map(item => item.fundName))]; // Get unique
             Swal.close();
           }, 1000);
         }
@@ -64,11 +71,31 @@ export class PortfolioAllocationDetailsComponent implements OnInit {
       },
       (error: any) => {
         console.error('Error posting data', error);
-        this.showErrorAlert(error.message);
+        this.showErrorAlert(error.statusText);
       });
   }
 
 
+  // Update the list of unique fund names
+  updateUniqueFunds(): void {
+    const fundNames = this.portfolioAllocation.map(item => item.fundName);
+    this.uniqueFunds = [...new Set(fundNames)];
+  }
+
+  // Method to set the filter
+  setFilter(fund: string): void {
+    console.log('Selected fund:', fund);
+    
+    if (fund === 'All') {
+      this.portfolioAllocation = this.originalPortfolioAllocation;
+    } else {
+      this.portfolioAllocation = [...this.originalPortfolioAllocation]; // Reload the original data if the search term is empty
+      this.portfolioAllocation = this.portfolioAllocation.filter(allocation => 
+        allocation.fundName.includes(fund)
+      );
+    }
+  }
+  
 
 
 

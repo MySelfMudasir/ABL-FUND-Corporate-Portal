@@ -17,93 +17,59 @@ declare var $: any; // if using jQuery-based themes
     CommonModule,
     ReactiveFormsModule,
   ],
-  templateUrl: './admin.component.html',
-  styleUrl: './admin.component.css'
+  templateUrl: './super-admin.component.html',
+  styleUrl: './super-admin.component.css'
 })
-export class AdminComponent {
+export class SuperAdminComponent {
   isActive:boolean = false;
   UserByFolio: any = [];
   temp: any = [];
   email: any;
   mobile: any;
-  status: any;
   hideform: boolean = false;
-  
+  addedUsers: any[] = [];
+
   constructor(private apiService: ApiService, private stateService: StateService, private router: Router,) {}
 
 
 
   ngOnInit(): void {
-
+    this.GetAddedUsers();   
   }
 
 
 
-  getUserByFolioForm: FormGroup = new FormGroup({
-    folio: new FormControl('', Validators.required)
-  });
-
-
-
-  adminForm: FormGroup = new FormGroup({
-    email: new FormControl('', Validators.required),
-    mobile: new FormControl('', Validators.required),
-    status: new FormControl('', Validators.required)
-  });
-
-
-
-  onSearch() {
-    if (this.getUserByFolioForm.valid) {
-      console.log('Form Submitted!', this.getUserByFolioForm.value);
-      this.loadingAlert('Processing your request...', 'Loading...'); // Pass a message to the loading alert
-      this.GetUserByFolio(this.getUserByFolioForm.value);
-    } else {
-      this.showErrorAlert('All Fields are Required.');
-    }
-  }
-
-
-
-  onSubmit()
-  {
-    if(this.adminForm.valid)
-    {
-      console.log('Form Submitted!', this.adminForm.value);
-      this.loadingAlert('Processing your request...', 'Loading...'); // Pass a message to the loading alert
-      this.UpdateUser(this.temp, this.adminForm.value);
-    }
-    else{
-      this.showErrorAlert('All Fields are Required.');
-    }
-  }
-
-
-
-
-  GetUserByFolio(folionumber:any) {
-    const GetUserByFolioPayload = folionumber ;        
-    this.apiService.GetUserByFolio(GetUserByFolioPayload).subscribe(
+  GetAddedUsers() {
+    this.apiService.GetAddedUsers().subscribe(
       (response: any) => {
-        console.log('GetUserByFolio Response:', response);
-        if (response) {        
-        this.temp = response;
-        this.UserByFolio = Object.entries({
-          folio: response.folio,
-          userId: response.userId,
-          name: response.name,
-          userType: response.userType,
-          status: response.status,
-        }); // This will give you an array of [key, value] pairs
-        this.email= response.email,
-        this.mobile= response.mobile,
-        this.status= response.status,
-        console.log(this.UserByFolio);
-        Swal.close();
-        this.isActive= true;
+        console.log('GetAddedUsers Response:', response);
+        if (response) {  
+          this.addedUsers = response;                
+          Swal.close();
+          this.isActive= true;
         }
         else{
           this.UserByFolio = 'User Not Found';
+        }
+      },
+      (error: any) => {
+        console.error('Error posting data', error);
+        this.showErrorAlert(error.statusText);
+      });
+  }
+
+
+
+  approveUser(folio:any) {
+    const UpdateUserPayload = this.addedUsers.find((user: any) => user.folio === folio);
+    UpdateUserPayload.status = 'A';
+    console.log("UpdateUserPayload", UpdateUserPayload);
+    this.apiService.UpdateUser(UpdateUserPayload).subscribe(
+      (response: any) => {
+        console.log('UpdateInputedUsers Response:', response);
+        if (response) {        
+          Swal.close();
+          this.showSuccessAlert();
         }
       },
       (error: any) => {
@@ -125,10 +91,8 @@ export class AdminComponent {
       (response: any) => {
         console.log('UpdatedUser Response:', response);
         if (response) {        
-        Swal.close();
-        this.showSuccessAlert();
-        this.isActive= false;
-        this.getUserByFolioForm.reset();
+          Swal.close();
+          this.showSuccessAlert();
         }
       },
       (error: any) => {
@@ -138,7 +102,7 @@ export class AdminComponent {
   }
 
 
-
+          
 
 
   loadingAlert(swalText: string, swalTitle: string) {

@@ -1,0 +1,90 @@
+<section class="">
+
+    <!-- Header Section -->
+    <app-header-2></app-header-2>
+
+    <main class="">
+
+        <div class="mt-1 mt-lg-3 container-fluid p-0">
+            <div class="row m-0">
+                <div class="blue-header" style="height: 35px; background-color: #22417f;">
+                </div>
+            </div>
+        </div>
+
+        <div class="row m-0">
+            <div class="col-md-12 p-0">
+                <div class="main-content">
+
+                    <!-- <form [formGroup]="adminForm" class="">
+                        <div class="row m-0" style="">
+                            <div class="col-12" style="padding-left: 15px; margin-top: 30px;">
+                                <form class="row g-3 m-0" [formGroup]="getUserByFolioForm">
+                                    <div class="col-md-4 col-12">
+                                        <label for="folionumber" class="visually-hidden">Folio Number:</label>
+                                        <input type="text" class="form-control" placeholder="enter folio number" formControlName="folio" required >
+                                    </div>
+                                    <div class="col-md-2 col-12">
+                                        <button type="submit" class="btn btn-orange mb-3 w-100" (click)="onSearch()">Search</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </form> -->
+
+                    <div class="table-responsive text-nowrap " style="margin-top: 50px; padding-left: 15px; margin-right: 30px;">
+                        <table class="table table-sm ">
+                          <thead class="" style="background-color: #22417f;">
+                            <tr>
+                              <th class="text-white fw-bold">Folio </th>
+                              <th class="text-white fw-bold">userID</th>
+                              <th class="text-white fw-bold">Name</th>
+                              <th class="text-white fw-bold">Email</th>
+                              <th class="text-white fw-bold">Mobile</th>
+                              <th class="text-white fw-bold">Status</th>
+                              <th class="text-white fw-bold">Actions</th>
+                            </tr>
+                          </thead>
+                          <tbody class="table-border-bottom-0" style="font-size: 10px;"> 
+                            <tr *ngIf="addedUsers.length === 0">
+                              <td colspan="7" class="text-center">No data available</td>
+                            </tr>
+                            <ng-container *ngFor="let user of addedUsers">
+                              <tr class="">
+                                <td>{{ user.folio }}</td>
+                                <td>{{ user.userId }}</td>
+                                <td>{{ user.name }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.mobile }}</td>
+                                <td>{{ user.status }}</td>
+                                <td class="">
+                                    <div class="d-flex gap-2">
+                                        <button class="btn btn-sm btn-success" (click)="approveUser(user.folio)">Approve</button>
+                                        <button class="btn btn-sm btn-danger disabled">Reject</button>
+                                        <button class="btn btn-sm btn-blue disabled">In-Progress</button>
+                                    </div>
+                                </td>
+                              </tr>
+                            </ng-container>
+                          </tbody>
+                          
+                        </table>
+                      </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+    
+</section>
+
+
+    <!-- Footer (always at the bottom) -->
+    <div class="row m-0">
+        <div class="col-12 p-0">
+            <app-footer2></app-footer2>
+        </div>
+    </div>

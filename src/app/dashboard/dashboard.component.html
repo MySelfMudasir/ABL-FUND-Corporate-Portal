@@ -120,19 +120,19 @@
                                         <div class="col-lg-4 col-md-6 col-12 p-0">
                                             <div class="row m-0 d-flex flex-wrap">
                                                 <div class="col-md-6 col-6 p-0">
-                                                    <button class="btn w-100 inprocess_toggle" 
-                                                            (click)="getTransactionDetail('INPROCESS'); toggleButtonState('INPROCESS')" 
-                                                            [disabled]="!isButtonDisabled">
+                                                  <button class="btn w-100 executed_toggle"
+                                                          [ngClass]="{'toggle_is_active': isExecutedActive}" 
+                                                          (click)="toggleButtonState('EXECUTED')">
+                                                    Executed
+                                                  </button>
+                                                </div>                                                  
+                                                <div class="col-md-6 col-6 p-0">
+                                                    <button class="btn w-100 inprocess_toggle"
+                                                            [ngClass]="{'toggle_is_active': isInProcessActive}" 
+                                                            (click)="toggleButtonState('INPROCESS')">
                                                       In-Process
                                                     </button>
                                                   </div>
-                                                  <div class="col-md-6 col-6 p-0">
-                                                    <button class="btn w-100 executed_toggle" 
-                                                            (click)="getTransactionDetail('EXECUTED'); toggleButtonState('EXECUTED')" 
-                                                            [disabled]="isButtonDisabled">
-                                                      Executed
-                                                    </button>
-                                                  </div>                                                  
                                             </div>
                                         </div>
                                     </div>

@@ -27,9 +27,13 @@ export class DashboardComponent {
   cisInvestmentValue:string = '';
   asOnDate:string = '';
   folionumber:string = '';
-  transexecuted:string = 'INPROCESS';
+  transexecuted:string = 'EXECUTED';
   transactionDetail: any[] = [];
+
   isButtonDisabled:boolean = true;
+  isInProcessActive: boolean = false;
+  isExecutedActive: boolean = true;
+  
   sortKey = ''; // Default sorting key
   sortOrder = 'asc'; // Default ascending order
   chartVisibility: boolean = true;
@@ -115,18 +119,12 @@ export class DashboardComponent {
   
 
   PortfolioSummary() {
-    // const globalAuthToken = sessionStorage.getItem('globalAuthToken');
-    const globalAuthToken = this.stateService.getGlobalAuthToken();
-    const headers = new HttpHeaders({
-      'Authorization': `Mbs645 ${globalAuthToken}`
-    });
-    
     const userid = this.stateService.getUserId();
     const folionumber = this.stateService.getAccountNumber();
     const portfolioSummaryPayload = { userid, folionumber };
     // console.log('Data being posted:', portfolioSummaryPayload, globalAuthToken);
 
-    this.apiService.GetPortfolioSummary(portfolioSummaryPayload, headers).subscribe(
+    this.apiService.GetPortfolioSummary(portfolioSummaryPayload).subscribe(
       (response: any) => {
         console.log('GetPortfolioSummary Response:', response);
         if (response) {
@@ -142,23 +140,17 @@ export class DashboardComponent {
       },
       (error: any) => {
         console.error('Error posting data', error);
-        this.showErrorAlert(error.message);
+        this.showErrorAlert(error.statusText);
       });
   }
   
 
 
   cnicPortfolioDetail() {
-    // const globalAuthToken = sessionStorage.getItem('globalAuthToken');
-    const globalAuthToken = this.stateService.getGlobalAuthToken();
-    const headers = new HttpHeaders({
-      'Authorization': `Mbs645 ${globalAuthToken}`
-    });
-    
     const folionumber = this.stateService.getAccountNumber();
     const portfolioSummaryPayload = { folionumber };    
 
-    this.apiService.GetCnicPortfolioDetail(portfolioSummaryPayload, headers).subscribe(
+    this.apiService.GetCnicPortfolioDetail(portfolioSummaryPayload).subscribe(
       (response: any) => {
         console.log('GetCnicPortfolioDetail Response:', response);
         if (response) { 
@@ -188,24 +180,18 @@ export class DashboardComponent {
       },
       (error: any) => {
         console.error('Error posting data', error);
-        this.showErrorAlert(error.message);
+        this.showErrorAlert(error.statusText);
       });
   }
 
 
   
   portfolioAllocationDetail() {
-    // const globalAuthToken = sessionStorage.getItem('globalAuthToken');
-    const globalAuthToken = this.stateService.getGlobalAuthToken();
-    const headers = new HttpHeaders({
-      'Authorization': `Mbs645 ${globalAuthToken}`
-    });
-    
     const userid = this.stateService.getUserId();
     const folionumber = this.stateService.getAccountNumber();
     const portfolioSummaryPayload = { userid, folionumber };    
 
-    this.apiService.GetPortfolioAllocationDetail(portfolioSummaryPayload, headers).subscribe(
+    this.apiService.GetPortfolioAllocationDetail(portfolioSummaryPayload).subscribe(
       (response: any) => {
         console.log('GetPortfolioAllocationDetail Response:', response);
         if (response) {          
@@ -234,7 +220,7 @@ export class DashboardComponent {
       },
       (error: any) => {
         console.error('Error posting data', error);
-        this.showErrorAlert(error.message);
+        this.showErrorAlert(error.statusText);
       });
   }
     
@@ -243,19 +229,13 @@ export class DashboardComponent {
   getTransactionDetail(transexecuted: string) {
     this.isButtonDisabled = !this.isButtonDisabled;  // Toggle the boolean value
     this.loadingAlert('Processing your request...', 'Loading...'); // Pass a message to the loading alert
-    // const globalAuthToken = sessionStorage.getItem('globalAuthToken');
-    const globalAuthToken = this.stateService.getGlobalAuthToken();
 
-    const headers = new HttpHeaders({
-      'Authorization': `Mbs645 ${globalAuthToken}`
-    });
-    
     const userid = this.stateService.getUserId();
     const folionumber = this.stateService.getAccountNumber();
     const portfolioSummaryPayload = { userid, folionumber, transexecuted };    
     // console.log('Data being posted:', portfolioSummaryPayload, globalAuthToken);
     
-    this.apiService.GetTransactionDetail(portfolioSummaryPayload, headers).subscribe(
+    this.apiService.GetTransactionDetail(portfolioSummaryPayload).subscribe(
       (response: any) => {
         console.log('GetTransactionDetail Response:', response);
         if (response) {
@@ -294,7 +274,7 @@ export class DashboardComponent {
       },
       (error: any) => {
         console.error('Error posting data', error);
-        this.showErrorAlert(error.message);
+        this.showErrorAlert(error.statusText);
       });
   }
 
@@ -322,9 +302,13 @@ export class DashboardComponent {
 
   toggleButtonState(buttonType: string) {
     if (buttonType === 'EXECUTED') {
-      this.isButtonDisabled = true;  // Disable the "Executed" button
+      this.getTransactionDetail('EXECUTED');
+      this.isExecutedActive = true;  // Mark Executed as active
+      this.isInProcessActive = false;  // Mark In-Process as inactive
     } else if (buttonType === 'INPROCESS') {
-      this.isButtonDisabled = false;  // Disable the "In-Process" button
+      this.getTransactionDetail('INPROCESS');
+      this.isInProcessActive = true;  // Mark In-Process as active
+      this.isExecutedActive = false;  // Mark Executed as inactive
     }
   }
 

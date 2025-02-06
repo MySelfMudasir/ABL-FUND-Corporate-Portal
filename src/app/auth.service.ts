@@ -24,14 +24,21 @@ export class AuthService {
     this.isAuthenticatedSubject.next(true);
   }
 
-  logout(): void {
+  logout(currentRoute:any): void {
     sessionStorage.removeItem('globalAuthToken');
     sessionStorage.removeItem('accountTitle'); 
     sessionStorage.removeItem('accountNumber');
     sessionStorage.removeItem('userId');
     this.isAuthenticatedSubject.next(false);
-    this.router.navigate(['/']); // Redirect to home
+
+    if(currentRoute === '/super-admin' || currentRoute === '/admin') {
+      this.router.navigate(['/admin-login']); // Redirect to Admin login
+    }
+    else {
+      this.router.navigate(['/']); // Redirect to home
+    }
   }
+
 
 
 }

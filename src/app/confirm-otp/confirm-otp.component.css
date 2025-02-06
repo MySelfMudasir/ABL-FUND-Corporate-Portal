@@ -4,7 +4,7 @@
 
 
 .AuthenticationBody {
-    background: url(/assets/images/LoginImgBg.jpg) no-repeat;
+    background: url(/corporateportal/assets/images/LoginImgBg.jpg) no-repeat;
     background-position: top;
     background-size: cover;
     padding: .5rem !important;

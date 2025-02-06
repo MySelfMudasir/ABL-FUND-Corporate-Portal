@@ -167,15 +167,7 @@ ul li {
 }
 
 .inprocess_toggle {
-    background-color: #f06a25; 
-    color: white; 
-    border-radius: 12px 0 0 12px;
-    padding: 6px 12px; 
-    font-weight: bold; 
-    border: none;
-}
-.executed_toggle {
-    background-color: #22417f;
+    background-color: #e55b204f;
     color: white;
     border-radius: 0px 12px 12px 0px;
     padding: 6px 12px;
@@ -185,6 +177,22 @@ ul li {
     -moz-border-radius: 0px 12px 12px 0px;
     -ms-border-radius: 0px 12px 12px 0px;
     -o-border-radius: 0px 12px 12px 0px;
+}
+.executed_toggle {
+    background-color: #e55b204f;
+    color: white;
+    border-radius: 12px 0px 0px 12px;
+    padding: 6px 12px;
+    font-weight: bold;
+    border: none;
+    -webkit-border-radius: 12px 0px 0px 12px;
+    -moz-border-radius: 12px 0px 0px 12px;
+    -ms-border-radius: 12px 0px 0px 12px;
+    -o-border-radius: 12px 0px 0px 12px;
+}
+
+.toggle_is_active {
+    background-color: #22417f !important;
 }
 
 .table-head-title{

@@ -24,6 +24,7 @@ declare var $: any; // if using jQuery-based themes
 })
 export class ReportsComponent {
   isActive:boolean = false;
+  isActive2:boolean = false;
   minDate: string = ''; // Variable to hold the minimum date
   maxDate: string = ''; // Variable to hold the maximum date
   fundsNames: any[] = [];
@@ -38,7 +39,7 @@ export class ReportsComponent {
     this.initializeThemeComponents();
 
     // Set minimum date to January 1, 2020
-    const minDate = new Date('01-01-2023');
+    const minDate = new Date('01-01-2024');
     this.minDate = minDate.toISOString().split('T')[0];
     // Set maximum date to today's date
     const maxDate = new Date();
@@ -52,7 +53,7 @@ export class ReportsComponent {
     reportName: new FormControl('', Validators.required),
     fromDate: new FormControl('', Validators.required),
     toDate: new FormControl('', Validators.required),
-    fundCode: new FormControl('', Validators.required)
+    fundCode: new FormControl('')
   });
 
   // Simplified formatDate function
@@ -69,25 +70,36 @@ export class ReportsComponent {
     console.log('Form Submitted!', this.reportForm.value);
     this.initializeThemeComponents();
     this.GetFundsNames();
-    this.isActive= true;
+    if(this.reportForm.value.reportName === 'Account Statement')
+    {
+      this.isActive= true;
+      this.isActive2= true;
+
+    }
+    else if(this.reportForm.value.reportName === 'CGT Certificate' || this.reportForm.value.reportName === 'WHT Certificate') {
+      this.isActive= true;
+      this.isActive2= false;
+    }
+    else
+    {
+      this.isActive2= false;
+    }
   }
 
 
   onSubmit() {
     if (this.reportForm.valid) {
       console.log('Form Submitted!', this.reportForm.value);
-
       // push formate date to form
       const { fromDate, toDate } = this.reportForm.value;
       this.reportForm.patchValue({
         fromDate: this.formatDate(fromDate),
         toDate: this.formatDate(toDate)
       });
-
-
       this.loadingAlert('Processing your request...', 'Loading...'); // Pass a message to the loading alert
       this.generateReport();
-    } else {
+    } 
+    else {
       this.showErrorAlert('All Fields are Required.');
     }
   }
@@ -100,15 +112,6 @@ export class ReportsComponent {
 
 
   generateReport() {
-
-    // const globalAuthToken = sessionStorage.getItem('globalAuthToken');
-    const globalAuthToken = this.stateService.getGlobalAuthToken();
-    const headers = new HttpHeaders({
-      'Authorization': `Mbs645 ${globalAuthToken}`,
-      'Content-Type': `application/json`
-    });
-
-
     const generateReportPayload = {
       folioNumber : this.stateService.getAccountNumber(),
       fromDate : this.reportForm.value.fromDate,
@@ -123,9 +126,9 @@ export class ReportsComponent {
     console.log('Data being posted:', generateReportPayload);
     
 
-    this.apiService.GenerateReport(generateReportPayload, headers).subscribe(
+    this.apiService.GenerateReport(generateReportPayload).subscribe(
       (response: any) => {
-        console.log('GetPortfolioAllocationDetail Response:', response);
+        console.log('Generate Report Response:', response);
         if (response) {    
           Swal.close();
           this.openPdf(response.reportsDto.result);
@@ -137,22 +140,17 @@ export class ReportsComponent {
       },
       (error: any) => {
         console.error('Error posting data', error);
-        // this.showErrorAlert(error.message);
+        // this.showErrorAlert(error.statusText);
       });
   }
 
 
 
   GetFundsNames() {
-    const globalAuthToken = sessionStorage.getItem('globalAuthToken');
-    const headers = new HttpHeaders({
-      'Authorization': `Mbs645 ${globalAuthToken}`
-    });
-    
     const folionumber = this.stateService.getAccountNumber();
     const GetFundsNamesPayload = { folionumber };    
     
-    this.apiService.GetFundsNames(GetFundsNamesPayload, headers).subscribe(
+    this.apiService.GetFundsNames(GetFundsNamesPayload).subscribe(
       (response: any) => {
         console.log('GetFundsNames Response:', response);
         if (response) {        
@@ -169,7 +167,7 @@ export class ReportsComponent {
       },
       (error: any) => {
         console.error('Error posting data', error);
-        // this.showErrorAlert(error.message);
+        // this.showErrorAlert(error.statusText);
       });
   }
 

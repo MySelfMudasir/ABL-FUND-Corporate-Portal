@@ -13,28 +13,33 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
 
-  consumerTokenPost(data: any): Observable<any> {
+  generateTokenPost(data: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/generateConsumerToken`, data);
   }
 
 
   
-  AuthenticateUser(data: any, headers: HttpHeaders): Observable<any> {
+  AuthenticateUser(data: any): Observable<any> {
     const completeUrl = `${this.baseUrl}/api/user/AuthenticateUser`;
     let params = new HttpParams()
         .set('userid', data.userid)
         .set('userpwd', data.userpwd);
-    return this.http.post<any>(completeUrl, null, { headers, params });
+    return this.http.post<any>(completeUrl, null, { params });
   }
 
 
-  AuthenticateAdmin(data: any, headers: HttpHeaders): Observable<any> {
-    const completeUrl = `${this.baseUrl}/api/user/AuthenticateUser`;
-    let params = new HttpParams()
-        .set('adminid', data.userid)
-        .set('adminpwd', data.userpwd);
-    return this.http.post<any>(completeUrl, null, { headers, params });
+  AuthenticateAdmin(data: any): Observable<any> {
+    const completeUrl = `${this.baseUrl}/api/user/LoginAdmin`;
+    return this.http.post<any>(completeUrl, data);
   }
+
+  
+  GetAddedUsers(): Observable<any> {
+    const completeUrl = `${this.baseUrl}/api/user/GetAddedUsers`;
+    return this.http.get<any>(completeUrl);
+  }
+
+  
 
 
   Signup(data: any): Observable<any> {
@@ -50,67 +55,67 @@ export class ApiService {
 
 
 
-  GetPortfolioSummary(data: any, headers: HttpHeaders): Observable<any> {
+  GetPortfolioSummary(data: any): Observable<any> {
     const completeUrl = `${this.baseUrl}/api/account/GetPortfolioSummary`;
     let params = new HttpParams()
         .set('userid', data.userid)
         .set('folionumber', data.folionumber);
-    return this.http.post<any>(completeUrl, null, { headers, params });
+    return this.http.post<any>(completeUrl, null, { params });
   }
 
 
-  GetCnicPortfolioDetail(data: any, headers: HttpHeaders): Observable<any> {
+  GetCnicPortfolioDetail(data: any): Observable<any> {
     const completeUrl = `${this.baseUrl}/api/account/cnicPortfolioDetail`;
     let params = new HttpParams()
       .set('folioNumber', data.folionumber);
-    return this.http.post<any>(completeUrl, null, { headers, params });
+    return this.http.post<any>(completeUrl, null, { params });
   }
 
 
 
-  GetPortfolioAllocationDetail(data: any, headers: HttpHeaders): Observable<any> {
+  GetPortfolioAllocationDetail(data: any): Observable<any> {
     const completeUrl = `${this.baseUrl}/api/account/GetPortfolioAllocationDetail`;
     let params = new HttpParams()
         .set('userid', data.userid)
         .set('folionumber', data.folionumber);
-    return this.http.post<any>(completeUrl, null, { headers, params });
+    return this.http.post<any>(completeUrl, null, { params });
   }
 
 
-  GetTransactionDetail(data: any, headers: HttpHeaders): Observable<any> {
+  GetTransactionDetail(data: any): Observable<any> {
     const completeUrl = `${this.baseUrl}/api/account/GetTransactionDetail`;
     let params = new HttpParams()
         .set('userid', data.userid)
         .set('folionumber', data.folionumber)
         .set('transexecuted', data.transexecuted);
-    return this.http.post<any>(completeUrl, null, { headers, params });
+    return this.http.post<any>(completeUrl, null, { params });
   }
 
   
 
-  GetFundsNames(data: any, headers: HttpHeaders): Observable<any> {
+  GetFundsNames(data: any): Observable<any> {
     const completeUrl = `${this.baseUrl}/api/account/getfundsname`;
     let params = new HttpParams()
         .set('folio', data.folionumber);
-    return this.http.get<any>(completeUrl, { headers, params });
+    return this.http.get<any>(completeUrl, { params });
   }
 
 
 
-  GenerateReport(data: any, headers: HttpHeaders): Observable<any> {
+  GenerateReport(data: any): Observable<any> {
     const completeUrl = `${this.baseUrl}/api/account/generateReport`;
-    let params = new HttpParams()
-      .set('planId', data.planId)
-      .set('fromDate', data.fromDate)
-      .set('toDate', data.toDate)
-      .set('folioNumber', data.folionumber)
-      .set('fundCode', data.fundCode)
-      .set('reportName', data.reportName)
-      .set('reportType', data.reportType)
-      .set('sessionId', data.sessionId)
-      .set('userId', data.userid);
-    return this.http.post<any>(completeUrl, data, { headers });
-    // return this.http.post<any>(completeUrl, data);  // Directly pass 'data' as the payload
+    // let params = new HttpParams()
+    //   .set('planId', data.planId)
+    //   .set('fromDate', data.fromDate)
+    //   .set('toDate', data.toDate)
+    //   .set('folioNumber', data.folionumber)
+    //   .set('fundCode', data.fundCode)
+    //   .set('reportName', data.reportName)
+    //   .set('reportType', data.reportType)
+    //   .set('sessionId', data.sessionId)
+    //   .set('userId', data.userid);
+    // return this.http.post<any>(completeUrl, data, {  });
+    return this.http.post<any>(completeUrl, data);  // Directly pass 'data' as the payload
 
   }
 

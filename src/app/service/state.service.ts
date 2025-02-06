@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StateService {
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   private globalAuthTokenSubject = new BehaviorSubject<string>(sessionStorage.getItem('globalAuthToken') || '');
   globalAuthToken$ = this.globalAuthTokenSubject.asObservable();
