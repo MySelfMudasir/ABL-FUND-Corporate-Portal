@@ -1,12 +1,12 @@
 import { Component} from '@angular/core';
 import { MainModule } from '../main/main.module';
 import { ApiService } from '../service/api.service';
-import { AuthService } from '../auth.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { StateService } from '../service/state.service';
 import { SpinnerComponent } from '../spinner/spinner.component';
+import { AuthService } from '../service/auth.service';
 @Component({
   selector: 'app-confirm-otp',
   standalone: true,

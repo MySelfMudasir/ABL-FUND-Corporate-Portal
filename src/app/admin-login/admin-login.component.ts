@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { MainModule } from '../main/main.module';
 import { ApiService } from '../service/api.service';
-import { AuthService } from '../auth.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
-import { HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { StateService } from '../service/state.service';
+import { AuthService } from '../service/auth.service';
 
 
 @Component({
@@ -113,28 +112,6 @@ export class AdminLoginComponent {
 
 
   AuthenticateAdmin() {
-    // if(this.login.value.adminid == 'Admin' && this.login.value.adminpwd == 'Admin123')
-    // {
-    //   this.stateService.setAccountTitle('Admin');
-    //   this.stateService.setAccountNumber('Admin');
-    //   this.stateService.setUserId('Admin');
-    //   setTimeout(() => {
-    //     Swal.close();
-    //     this.router.navigate(['admin']); // Redirect to dashboard
-    //   }, 1000);
-    // }
-    // if(this.login.value.adminid == 'Super' && this.login.value.adminpwd == 'Superadmin')
-    // {
-    //   this.stateService.setAccountTitle('Admin');
-    //   this.stateService.setAccountNumber('Admin');
-    //   this.stateService.setUserId('Admin');
-    //   setTimeout(() => {
-    //     Swal.close();
-    //     this.router.navigate(['super-admin']); // Redirect to dashboard
-    //   }, 1000);
-    // }
-    
-    
     this.apiService.AuthenticateAdmin(this.login.value).subscribe(
       (response: any) => {
         console.log('Authentication Response:', response);

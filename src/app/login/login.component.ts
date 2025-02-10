@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { MainModule } from '../main/main.module';
 import { ApiService } from '../service/api.service';
-import { AuthService } from '../auth.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { StateService } from '../service/state.service';
+import { AuthService } from '../service/auth.service';
 
 
 @Component({
