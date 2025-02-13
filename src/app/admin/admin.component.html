@@ -40,18 +40,18 @@
                             <div class="row mx-0" *ngIf="isActive" style="margin-top: 20px;">
                                 <div class="col-md-6 col-12">
                                     <label class="form-label">Email:<span class="required-star"> *</span></label>
-                                    <input type="email" class="form-control" placeholder="enter email" formControlName="email" [(ngModel)]="email" required >
+                                    <input type="email" class="form-control" placeholder="enter email" formControlName="email" required >
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <label for="bs-datepicker-format" class="form-label">Phone:<span class="required-star"> *</span></label>
-                                    <input type="text" class="form-control" placeholder="enter mobile number" formControlName="mobile" [(ngModel)]="mobile" required >
+                                    <input type="text" class="form-control" placeholder="enter mobile number" formControlName="mobile" required >
                                 </div>
                                 <div class="col-md-6 col-12 mt-3">
                                     <label class="form-label">Status:<span class="required-star"> *</span></label>
-                                    <select class="form-select w-100" formControlName="status" required>
-                                        <option value="" disabled>Select One</option>
-                                        <option value="A" [selected]="status === '1'">Active</option>
-                                        <option value="N" [selected]="status === '0'">Not Active</option>
+                                    <select class="form-select w-100" formControlName="status" name="status" required>
+                                        <option value="" disabled selected>Select One</option>
+                                        <option value="A">Active</option>
+                                        <option value="N">Not Active</option>
                                     </select>
                                 </div>
                                 <div class="row justify-content-center m-0" style="margin-top: 70px !important;">

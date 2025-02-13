@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { MainModule } from '../main/main.module';
 import { ChartComponent } from "../chart/chart.component";
 import { NavigationEnd, Router } from '@angular/router';
-import { HttpHeaders } from '@angular/common/http';
 import { ApiService } from '../service/api.service';
 import Swal from 'sweetalert2';
 import { StateService } from '../service/state.service';
@@ -255,6 +254,11 @@ export class DashboardComponent {
             if (!allocation.amount) allocation.amount = 'null';
             if (!allocation.TO_FOLIO_NUM) allocation.TO_FOLIO_NUM || 'null';
             if (!allocation.TO_FUND_CODE) allocation.TO_FUND_CODE || 'null';
+
+            if (allocation.transDate !== 'null') {
+              allocation.transDate = this.DateFormator(allocation.transDate);
+            }
+
             this.transactionDetail.push(allocation);
           });
             
@@ -296,6 +300,12 @@ export class DashboardComponent {
       if (valueA > valueB) return this.sortOrder === 'asc' ? 1 : -1;
       return 0;
     });
+  }
+
+
+  DateFormator(dateString: string): Date {
+    const parts = dateString.split('/');
+    return new Date(+parts[2], +parts[1] - 1, +parts[0]);  // Convert to a Date object
   }
 
 

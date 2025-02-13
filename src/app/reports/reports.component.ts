@@ -5,7 +5,6 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ApiService } from '../service/api.service';
 import { StateService } from '../service/state.service';
 import { Router } from '@angular/router';
-import { HttpHeaders } from '@angular/common/http';
 import Swal from 'sweetalert2';
 declare var $: any; // if using jQuery-based themes
 
@@ -96,6 +95,14 @@ export class ReportsComponent {
         fromDate: this.formatDate(fromDate),
         toDate: this.formatDate(toDate)
       });
+ 
+      // this.reportForm.patchValue({
+      //   reportName: '',
+      //   fromDate: this.reportForm.value.fromDate,
+      //   toDate: this.reportForm.value.toDate,
+      //   fundCode: ''
+      // });
+      
       this.loadingAlert('Processing your request...', 'Loading...'); // Pass a message to the loading alert
       this.generateReport();
     } 
@@ -124,7 +131,6 @@ export class ReportsComponent {
       userId : this.stateService.getUserId(),
     };
     console.log('Data being posted:', generateReportPayload);
-    
 
     this.apiService.GenerateReport(generateReportPayload).subscribe(
       (response: any) => {
@@ -149,7 +155,6 @@ export class ReportsComponent {
   GetFundsNames() {
     const folionumber = this.stateService.getAccountNumber();
     const GetFundsNamesPayload = { folionumber };    
-    
     this.apiService.GetFundsNames(GetFundsNamesPayload).subscribe(
       (response: any) => {
         console.log('GetFundsNames Response:', response);

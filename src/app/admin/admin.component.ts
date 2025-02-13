@@ -71,7 +71,7 @@ export class AdminComponent {
     {
       console.log('Form Submitted!', this.adminForm.value);
       this.loadingAlert('Processing your request...', 'Loading...'); // Pass a message to the loading alert
-      this.UpdateUser(this.temp, this.adminForm.value);
+      this.registerCorpUser(this.temp, this.adminForm.value);
     }
     else{
       this.showErrorAlert('All Fields are Required.');
@@ -92,12 +92,14 @@ export class AdminComponent {
           folio: response.folio,
           userId: response.userId,
           name: response.name,
-          userType: response.userType,
-          status: response.status,
+          userType: 'Corporate', // Set the userType to 'Corporate'
         }); // This will give you an array of [key, value] pairs
-        this.email= response.email,
-        this.mobile= response.mobile,
-        this.status= response.status,
+        this.adminForm.patchValue({
+          email: response.email,
+          mobile: response.mobile,
+          status: response.status, // Set the status to the form
+        });
+
         console.log(this.UserByFolio);
         Swal.close();
         this.isActive= true;
@@ -115,15 +117,16 @@ export class AdminComponent {
 
 
 
-  UpdateUser(folionumberdata:any, data:any) {
+  registerCorpUser(folionumberdata:any, data:any) {
     folionumberdata.email = data.email;
     folionumberdata.mobile = data.mobile;
     folionumberdata.status = data.status;
-    const UpdateUserPayload = folionumberdata;
-    console.log("UpdateUserPayload", UpdateUserPayload);
-    this.apiService.UpdateUser(UpdateUserPayload).subscribe(
+
+    const registerCorpUserPayload = folionumberdata;
+    console.log("registerCorpUserPayload", registerCorpUserPayload);
+    this.apiService.registercorpuser(registerCorpUserPayload).subscribe(
       (response: any) => {
-        console.log('UpdatedUser Response:', response);
+        console.log('registercorpUser Response:', response);
         if (response) {        
         Swal.close();
         this.showSuccessAlert();

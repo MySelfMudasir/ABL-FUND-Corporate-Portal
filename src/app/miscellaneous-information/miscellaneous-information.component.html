@@ -1,0 +1,129 @@
+<section class="" style="">
+
+
+
+    <app-header-2></app-header-2>
+
+
+
+    <main class="">
+
+
+        <div class="mt-1 mt-lg-3 container-fluid p-0">
+            <div class="row m-0">
+                <div class="blue-header" style="height: 35px; background-color: #22417f;">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row m-0">
+            <div class="col-md-3 ps-0">
+                <!-- Sidebar -->
+                <app-sidebar></app-sidebar>
+                <!-- Sidebar -->
+            </div>
+            <div class="col-md-9 p-0">
+                <div class="main-content">
+
+                    <div class="row justify-content-start m-0" style="padding-top: 50px;">
+                        <div class="col-12">
+                            <a href="https://www.ablfunds.com/our-offerings" class="d-block mb-2" target="_blank">
+                                Our Offerings
+                                <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+                            </a>
+                            <a href="https://www.ablfunds.com/nav" class="d-block mb-2" target="_blank">
+                                NAV History of All Funds & Plans
+                                <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+                            </a>
+                            <a href="https://www.ablfunds.com/type/fund-manager-reports" class="d-block mb-2"
+                                target="_blank">
+                                FMRs
+                                <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+                            </a>
+                            <button class="btn-blue p-0"
+                                type="button" data-bs-toggle="collapse" data-bs-target="#collapseBasicInfo"
+                                aria-expanded="false" aria-controls="collapseExample">
+                                <span>NTNs of all Funds</span>
+                            </button>
+                            <div class="collapse multi-collapse" id="collapseBasicInfo">
+                                <div class="flex-column row">
+                                    <div class="table-responsive text-nowrap" style="max-height: 300px !important;">
+                                        <table class="table table-sm table-bordered">
+                                            <thead class="" style="background-color: #22417f; position: sticky; top: 0; z-index: 1;">
+                                                <tr>
+                                                    <th class="text-white fw-bold">S.No</th>
+                                                    <th class="text-white fw-bold">FUND NAME</th>
+                                                    <th class="text-white fw-bold">NTN</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="table-border-bottom-0" style="font-size: 10px;">
+                                                <tr *ngIf="fundsList.length === 0">
+                                                    <td colspan="7" class="text-center">No data available</td>
+                                                </tr>
+                                                <ng-container *ngFor="let fund of fundsList; let i = index;"> 
+                                                    <tr class="">
+                                                        <td>{{ i+1 }}</td>
+                                                        <td>{{ fund.name }}</td>
+                                                        <td>{{ fund.NTN }}</td>
+                                                    </tr>
+                                                </ng-container>
+                                            </tbody>
+        
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    
+                    <div class="row m-0 d-none">
+                        <div class="col-12">
+                            <div class="table-responsive text-nowrap" style="margin-top: 50px; max-height: 300px !important;">
+                                <table class="table table-sm table-bordered">
+                                    <thead class="" style="background-color: #22417f; position: sticky; top: 0; z-index: 1;">
+                                        <tr>
+                                            <th class="text-white fw-bold">S.No</th>
+                                            <th class="text-white fw-bold">FUND NAME</th>
+                                            <th class="text-white fw-bold">NTN</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-border-bottom-0" style="font-size: 10px;">
+                                        <tr *ngIf="fundsList.length === 0">
+                                            <td colspan="7" class="text-center">No data available</td>
+                                        </tr>
+                                        <ng-container *ngFor="let fund of fundsList; let i = index;"> 
+                                            <tr class="">
+                                                <td>{{ i+1 }}</td>
+                                                <td>{{ fund.name }}</td>
+                                                <td>{{ fund.NTN }}</td>
+                                            </tr>
+                                        </ng-container>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+
+
+</section>
+
+<!-- Footer2 (always visible) -->
+<div class="row m-0">
+    <div class="col-12 p-0">
+        <app-footer2></app-footer2>
+    </div>
+</div>

@@ -18,6 +18,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { AdminAuthGuard } from './guard/admin-auth.guard';
 import { corportateAuthGuard } from './guard/corportate-auth.guard';
+import { MiscellaneousInformationComponent } from './miscellaneous-information/miscellaneous-information.component';
 
 export const routes: Routes = [
 
@@ -34,11 +35,12 @@ export const routes: Routes = [
     { path: 'admin', component: AdminComponent, canActivate: [AdminAuthGuard] },  // Admin route
     { path: 'super-admin', component: SuperAdminComponent, canActivate: [AdminAuthGuard] },
     { path: 'portfolioAllocationDetails', component: PortfolioAllocationDetailsComponent, canActivate: [corportateAuthGuard] },
-    // { path: 'investor-profile', component: InvestorProfileComponent, canActivate: [AuthGuard] },
-    // { path: 'investment', component: InvestmentComponent, canActivate: [AuthGuard] },
-    // { path: 'redemption', component: RedemptionComponent, canActivate: [AuthGuard] },
-    // { path: 'conversion', component: ConversionComponent, canActivate: [AuthGuard] },
+    // { path: 'investor-profile', component: InvestorProfileComponent, canActivate: [corportateAuthGuard] },
+    // { path: 'investment', component: InvestmentComponent, canActivate: [corportateAuthGuard] },
+    // { path: 'redemption', component: RedemptionComponent, canActivate: [corportateAuthGuard] },
+    // { path: 'conversion', component: ConversionComponent, canActivate: [corportateAuthGuard] },
     { path: 'reports', component: ReportsComponent, canActivate: [corportateAuthGuard]},
+    { path: 'miscellaneous-information', component: MiscellaneousInformationComponent, canActivate: [corportateAuthGuard]},
     { path: 'change-password', component: ChangePasswordComponent, canActivate: [corportateAuthGuard]},
     { path: 'logout', component: LogoutComponent },
 

@@ -64,6 +64,9 @@
           </div>
         </li>
         
+        <li [class.active]="isActive('/miscellaneous-information')">
+          <a href="javascript:void(0)" routerLink="/miscellaneous-information"><i class="far fa-info-circle"></i> Miscellaneous information</a>
+        </li>
         <li [class.active]="isActive('/logout')">
           <a href="javascript:void(0)" (click)="openModal()"><i class="far fa-sign-out-alt"></i> Logout</a>
         </li>

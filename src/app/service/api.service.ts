@@ -138,9 +138,16 @@ export class ApiService {
   }
 
 
-  UpdateUser(data: any): Observable<any> {
+  
+  registercorpuser(data: any): Observable<any> {
     const completeUrl = `${this.baseUrl}/api/user/registercorpuser`;
     return this.http.post<any>(completeUrl, data);
+  }
+
+
+  UpdateInputedUsers(data: any): Observable<any> {
+    const completeUrl = `${this.baseUrl}/api/user/UpdateInputedUsers`;
+    return this.http.put<any>(completeUrl, data);
   }
 
 

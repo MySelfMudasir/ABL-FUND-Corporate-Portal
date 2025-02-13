@@ -197,14 +197,15 @@
                                         </tr>
                                         <ng-container *ngFor="let transaction of transactionDetail">
                                           <tr class="">
-                                            <td>{{ transaction.transDate }}</td>
+                                            <!-- <td>{{ transaction.transDate }}</td> -->
+                                            <td>{{ transaction.transDate | date:'MM/dd/yyyy' }}</td>
                                             <td>{{ transaction.fundName }}</td>
                                             <td>{{ transaction.transType }}</td>
                                             <td>{{ transaction.units }}</td>
                                             <td class="">{{ transaction.amount | number:'1.0-0' }}</td>
                                           </tr>
                                           <tr *ngIf="transaction.transType === 'FTF'" class="">
-                                            <td>{{ transaction.transDate }}</td>
+                                            <td>{{ transaction.transDate | date:'MM/dd/yyyy' }}</td>
                                             <td>{{ transaction.TO_FUND_CODE }}</td>
                                             <td>{{ transaction.transType }}</td>
                                             <td>{{ transaction.units }}</td>

@@ -58,6 +58,13 @@ export class PortfolioAllocationDetailsComponent implements OnInit {
           setTimeout(() => {
             this.totalBalanceAmount = (response.totalBalanceAmount);
             this.portfolioAllocation = response.portfolioAllocation;
+            
+            this.portfolioAllocation.forEach(item => {
+              if (item.navDate !== 'null') {
+                item.navDate = this.DateFormator(item.navDate);
+              }
+            });
+
             this.originalPortfolioAllocation = response.portfolioAllocation;
             this.fundList = [...new Set(this.portfolioAllocation.map(item => item.fundName))]; // Get unique
             Swal.close();
@@ -127,6 +134,14 @@ export class PortfolioAllocationDetailsComponent implements OnInit {
       return 0;
     });
   }
+
+
+  DateFormator(dateString: string): Date {
+    const parts = dateString.split('/');
+    return new Date(+parts[2], +parts[1] - 1, +parts[0]);  // Convert to a Date object
+  }
+
+
 
 
   filterPortfolio(event: any) {

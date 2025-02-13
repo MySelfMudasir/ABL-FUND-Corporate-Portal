@@ -62,14 +62,16 @@ export class SuperAdminComponent {
 
   approveUser(folio:any) {
     const UpdateUserPayload = this.addedUsers.find((user: any) => user.folio === folio);
-    UpdateUserPayload.status = 'A';
+    UpdateUserPayload.approvalStatus = 'Approved';
+
     console.log("UpdateUserPayload", UpdateUserPayload);
-    this.apiService.UpdateUser(UpdateUserPayload).subscribe(
+    this.apiService.UpdateInputedUsers(UpdateUserPayload).subscribe(
       (response: any) => {
         console.log('UpdateInputedUsers Response:', response);
         if (response) {        
           Swal.close();
           this.showSuccessAlert();
+          this.GetAddedUsers();   
         }
       },
       (error: any) => {
@@ -81,25 +83,27 @@ export class SuperAdminComponent {
 
 
 
-  UpdateUser(folionumberdata:any, data:any) {
-    folionumberdata.email = data.email;
-    folionumberdata.mobile = data.mobile;
-    folionumberdata.status = data.status;
-    const UpdateUserPayload = folionumberdata;
-    console.log("UpdateUserPayload", UpdateUserPayload);
-    this.apiService.UpdateUser(UpdateUserPayload).subscribe(
-      (response: any) => {
-        console.log('UpdatedUser Response:', response);
-        if (response) {        
-          Swal.close();
-          this.showSuccessAlert();
-        }
-      },
-      (error: any) => {
-        console.error('Error posting data', error);
-        this.showErrorAlert(error.statusText);
-      });
-  }
+  // UpdateInputedUsers(folionumberdata:any, data:any) {
+  //   folionumberdata.email = data.email;
+  //   folionumberdata.mobile = data.mobile;
+  //   folionumberdata.status = data.status;
+  //   folionumberdata.approvalStatus = 'Approved';
+
+  //   const UpdateInputedUsersPayload = folionumberdata;
+  //   console.log("UpdateInputedUsersPayload", UpdateInputedUsersPayload);
+  //   this.apiService.UpdateInputedUsers(UpdateInputedUsersPayload).subscribe(
+  //     (response: any) => {
+  //       console.log('UpdatedUser Response:', response);
+  //       if (response) {        
+  //         Swal.close();
+  //         this.showSuccessAlert();
+  //       }
+  //     },
+  //     (error: any) => {
+  //       console.error('Error posting data', error);
+  //       this.showErrorAlert(error.statusText);
+  //     });
+  // }
 
 
           

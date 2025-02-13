@@ -1,0 +1,46 @@
+section {
+    background: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+    overflow: auto; /* Ensure content scrolls if needed */
+}
+
+
+.btn-blue {
+    background-color: transparent !important;
+    color: #22417f;
+    border: none;
+    font-size: 16px;
+}
+
+
+
+.table-head-title{
+    font-size: 23px;
+    font-weight: bold;
+    color: #003366; /* Dark blue color */
+    margin-bottom: 15px;
+}
+
+
+@media (max-width: 768px) {
+    .card
+    {
+        width: 100% !important;
+    }
+    .col-btn-group
+    {
+        padding: 0px !important;
+        margin-top: 20px !important;
+    }
+    .div-form-label-account
+    {
+        display: flex;
+        justify-content: start !important;
+    }
+}
