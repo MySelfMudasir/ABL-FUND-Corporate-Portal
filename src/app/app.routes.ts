@@ -18,6 +18,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { AdminAuthGuard } from './guard/admin-auth.guard';
 import { corportateAuthGuard } from './guard/corportate-auth.guard';
+import { DirectChangePasswordComponent } from './direct-change-password/change-password.component';
 import { MiscellaneousInformationComponent } from './miscellaneous-information/miscellaneous-information.component';
 
 export const routes: Routes = [
@@ -42,6 +43,7 @@ export const routes: Routes = [
     { path: 'reports', component: ReportsComponent, canActivate: [corportateAuthGuard]},
     { path: 'miscellaneous-information', component: MiscellaneousInformationComponent, canActivate: [corportateAuthGuard]},
     { path: 'change-password', component: ChangePasswordComponent, canActivate: [corportateAuthGuard]},
+    { path: 'direct-change-password', component: DirectChangePasswordComponent},
     { path: 'logout', component: LogoutComponent },
 
     // Wildcard route

@@ -125,6 +125,7 @@ export class LoginComponent {
   AuthenticateUser() {
     this.apiService.AuthenticateUser(this.login.value).subscribe(
       (response: any) => {
+        console.log(response);
         if (response.responseCode == "SUCCESS") {
           // console.log('Authentication Response:', response);
           this.stateService.setAccountTitle(response.accountList[0].accountTitle);
@@ -134,6 +135,17 @@ export class LoginComponent {
           setTimeout(() => {
             Swal.close();
             this.router.navigate(['dashboard']); // Redirect to dashboard
+          }, 1000);
+        }
+        else if (response.responseCode == "99") {
+          // console.log('Authentication Response:', response);
+          // this.stateService.setAccountTitle(response.accountList[0].accountTitle);
+          // this.stateService.setAccountNumber(response.accountList[0].accountNumber);
+          const capitalizedUserId = this.login.get('userid')?.value.toUpperCase();
+          this.stateService.setUserId(capitalizedUserId);
+          setTimeout(() => {
+            Swal.close();
+            this.router.navigate(['direct-change-password']); // Redirect to dashboard
           }, 1000);
         }
         else{

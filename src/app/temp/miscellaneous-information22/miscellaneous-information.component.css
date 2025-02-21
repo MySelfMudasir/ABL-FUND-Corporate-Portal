@@ -19,16 +19,67 @@ main {
 
 .btn-blue {
     background-color: transparent !important;
-    color: blue;
+    color: #22417f;
     border: none;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 16px;
 }
-.btn-blue:hover {
+
+
+
+.custom-link {
+    display: flex;
+    align-items: center;
+    color: #22417f;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 10px 0;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+.custom-link:hover {
     color: #F06A25;
+    text-decoration: none;
+    transform: translateX(5px);
 }
 
+.custom-link i {
+    margin-left: 8px;
+    font-size: 14px;
+    transition: transform 0.3s ease-in-out;
+}
 
+.custom-link:hover i {
+    /* transform: rotate(45deg); */
+}
+
+/* Adding a subtle underline effect */
+.custom-link::after {
+    content: "";
+    width: 0%;
+    height: 2.2px;
+    background: #F06A25;
+    position: absolute;
+    left: 27px;
+    bottom: -3px;
+    transition: width 0.5s ease-in-out;
+    -webkit-transition: width 0.5s ease-in-out;
+    -moz-transition: width 0.5s ease-in-out;
+    -ms-transition: width 0.5s ease-in-out;
+    -o-transition: width 0.5s ease-in-out;
+}
+
+.custom-link:hover::after {
+    width: 100%;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .custom-link {
+        font-size: 14px;
+    }
+}
 
 
 
@@ -73,43 +124,25 @@ main {
 /* Table Styling */
 table {
     width: 100%;
+    border-radius: 8px;
     overflow: hidden;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    -ms-border-radius: 8px;
-    -o-border-radius: 8px;
-}
-.table-bordered {
-    border-collapse: collapse;
-    border-spacing: 0;
-    border: 1px solid #969aa161;
 }
 
 thead tr th {
     background-color: #22417f;
     color: white !important;
     font-size: 14px;
-    text-align: start;
+    text-align: center;
 }
 
-tbody tr {
-    font-size: 14px;
+tbody tr:nth-child(even) {
     background-color: #f0f3f7;
 }
 
-thead tr .center_data {
-    text-align: center !important;
+tbody tr:hover {
+    background-color: #dde6f0;
+    transition: 0.2s ease-in-out;
 }
-tbody tr .center_data {
-    text-align: center !important;
-}
-/* thead tr th:nth-child(2) {
-    text-align: start;
-}
-tbody tr td:nth-child(2) {
-    text-align: start;
-} */
-
 
 @media (max-width: 768px) {
     .card

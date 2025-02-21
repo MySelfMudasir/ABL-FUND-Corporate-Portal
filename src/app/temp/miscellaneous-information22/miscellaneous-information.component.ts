@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './miscellaneous-information.component.html',
   styleUrl: './miscellaneous-information.component.css'
 })
-export class MiscellaneousInformationComponent {
+export class MiscellaneousInformation2Component {
   fundsList: any[] = [];
   isIconRight: boolean = true;
 

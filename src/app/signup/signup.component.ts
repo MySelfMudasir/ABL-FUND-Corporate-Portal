@@ -76,7 +76,7 @@ export class SignupComponent {
         }, 1000);
       }
       else{
-        this.showErrorAlert('Invalid User ID or Password');
+        this.showErrorAlert('User record does not exist');
       }
     },
     (error: any) => {
