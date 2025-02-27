@@ -122,7 +122,7 @@ export class DirectChangePasswordComponent {
         }
         else if (response.responseCode === 'SUCCESS') {
           this.showErrorAlert(response.responseMessage, 'success', 'Success');
-
+          this.router.navigate(['/login']);
         }
         else{
           this.showErrorAlert('The server did not return any response.');
