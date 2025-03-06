@@ -59,7 +59,7 @@ export class ChartComponent implements OnInit, OnDestroy {
 
   updateChart() {
     if (this.chart) {
-      this.chart.data = this.chartData.data; // Update the chart's data
+      this.chart.data = this.chartData.data; // Update the chart's data      
       this.chart.update(); // Trigger re-rendering
       this.cdr.detectChanges();
     }
@@ -115,13 +115,15 @@ export class ChartComponent implements OnInit, OnDestroy {
           label: (tooltipItem: any) => {
             const dataIndex = tooltipItem.dataIndex;
             const dataValue = tooltipItem.dataset.data[dataIndex];
+            const formattedDataValue = tooltipItem.dataset.formattedData[dataIndex];
+            
             const dataValueTotal = tooltipItem.dataset.data.reduce(
               (total: number, value: number) => total + Number(value), 0
             );
             const percentage = Math.round((dataValue / dataValueTotal) * 100);
             return [
               // `${tooltipItem.dataset.labels[dataIndex]}`,
-              `${dataValue} (${percentage}%)`,
+              `${formattedDataValue} (${percentage}%)`,
             ];
           },
         },
@@ -162,7 +164,7 @@ export class ChartComponent implements OnInit, OnDestroy {
         const dataset = this.chart?.data.datasets[datasetIndex] as any;
 
         if (dataset) {
-          dataset.borderWidth = dataset.borderWidth === 5 ? 0 : 5; // Toggle borderWidth
+          dataset.borderWidth = dataset.borderWidth === 2 ? 0 : 2; // Toggle borderWidth
           this.chart?.update();
         } else {
           console.error('Spacing property not found in dataset');

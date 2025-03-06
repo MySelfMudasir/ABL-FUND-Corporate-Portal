@@ -92,7 +92,7 @@ export class DashboardComponent {
           data: [],
           backgroundColor: [],
           borderWidth: 0,  // Set borderWidth to 0 to remove the white line
-          hoverOffset: 10,
+          hoverOffset: 0,
         },
       ],
     },
@@ -128,6 +128,7 @@ export class DashboardComponent {
         console.log('GetPortfolioSummary Response:', response);
         if (response) {
           this.totalBalanceAmount = response.totalBalanceAmount;
+          this.cisInvestmentValue = response.totalBalanceAmount;                   
           this.asOnDate = response.asOnDate;
           setTimeout(() => {
             Swal.close();
@@ -145,7 +146,7 @@ export class DashboardComponent {
   
 
 
-  cnicPortfolioDetail() {
+  cnicPortfolioDetail() { 
     const folionumber = this.stateService.getAccountNumber();
     const portfolioSummaryPayload = { folionumber };    
 
@@ -153,27 +154,47 @@ export class DashboardComponent {
       (response: any) => {
         console.log('GetCnicPortfolioDetail Response:', response);
         if (response) { 
-          this.cisInvestmentValue = response.cisPortfolioSummary.cisInvestmentValue;                   
+          console.clear();
+          
+          // Initialize formattedData array if it doesn't exist
+          this.chartData.data.datasets[0].formattedData = [];
+
+          // Loop through each allocation to format the amounts
           response.cisPortfolioSummary.cisPortfolioSummary.forEach((allocation: any) => {
+            // Add the fundCategoryCode to the labels for the chart
             this.chartData.data.labels.push(allocation.fundCategoryCode);
-            this.chartData.data.datasets[0].data.push(allocation.amount);
+            
+            // Store the raw amount and formatted amount separately
+            const rawAmount = allocation.amount;  // Raw value (no formatting)
+
+            const formattedAmount = this.formatNumberWithSeparator(rawAmount);  // Formatted value
+            // Push the raw value into the datasets
+            this.chartData.data.datasets[0].data.push(rawAmount);
+            
+            // Push the formatted amount into formattedData
+            this.chartData.data.datasets[0].formattedData.push(formattedAmount);
+            // You can also log the raw and formatted amounts
+            console.log(`Raw: ${rawAmount}, Formatted: ${formattedAmount}`);
+
+            // Add the background color
             this.chartData.data.datasets[0].backgroundColor.push(allocation.fundCategoryColorCode);
           });
           
-          // Update the first chart
+          // Update the chart
           this.chart1.updateChart();
           
+          // Close the Swal after some delay
           setTimeout(() => {
-          Swal.close();
+            Swal.close();
           }, 9000);
-        }
+        } 
         else if (response == null) {
           this.transactionDetail = [];
           setTimeout(() => {
             Swal.close();
           }, 1000);
         }
-        else{
+        else {
           this.loadingAlert('No Response', 'The server did not return any response.');
         }
       },
@@ -181,7 +202,10 @@ export class DashboardComponent {
         console.error('Error posting data', error);
         this.showErrorAlert(error.statusText);
       });
-  }
+}
+
+
+
 
 
   
@@ -307,6 +331,12 @@ export class DashboardComponent {
     const parts = dateString.split('/');
     return new Date(+parts[2], +parts[1] - 1, +parts[0]);  // Convert to a Date object
   }
+
+
+  // Function to format numbers with a thousand separator
+  formatNumberWithSeparator(value: number): string {
+    return new Intl.NumberFormat('en-US').format(value);
+}
 
 
 

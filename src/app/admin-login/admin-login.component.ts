@@ -48,12 +48,12 @@ export class AdminLoginComponent {
 
 
   login: FormGroup = new FormGroup({
-    adminId: new FormControl('Super', [
+    adminId: new FormControl('', [
       Validators.required,
       // Validators.minLength(5),
       // Validators.maxLength(5),
     ]),
-    adminPassword: new FormControl('Superadmin', [
+    adminPassword: new FormControl('', [
       Validators.required,
       // Validators.minLength(6),
       // Validators.maxLength(6),

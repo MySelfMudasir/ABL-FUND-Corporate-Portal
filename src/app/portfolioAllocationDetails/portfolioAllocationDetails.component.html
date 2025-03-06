@@ -129,8 +129,8 @@
                                                 class="border border-secondary border-bottom border-start-0 border-end-0">
                                                 <td>{{ allocation.fundName }}</td>
                                                 <td>{{ allocation.navDate | date:'MM/dd/yyyy' }}</td>
-                                                <td class="text-end">{{ allocation.navPrice }}</td>
-                                                <td class="text-end">{{ allocation.availableUnits | number:'1.2-2' }}</td>
+                                                <td class="text-end">{{ allocation.navPrice  | number:'1.4-4'}}</td>
+                                                <td class="text-end">{{ allocation.availableUnits | number:'1.4-4' }}</td>
                                                 <td class="text-end">{{ allocation.availableAmount | number:'1.2-2'}}
                                                 </td>
                                             </tr>
@@ -142,7 +142,7 @@
                                                     Total Investment Value (Rs.):
                                                 </td>
                                                 <td class="fw-bold text-white text-end totalInvestmentValue">
-                                                    {{ totalBalanceAmount | number:'1.0-0'}}
+                                                    {{ totalBalanceAmount | number:'1.2-2'}}
                                                 </td>
                                             </tr>
                                         </tfoot>

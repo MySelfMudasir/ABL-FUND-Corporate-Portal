@@ -59,12 +59,12 @@ export class LoginComponent {
 
 
   login: FormGroup = new FormGroup({
-    userid: new FormControl('ABLAMC030908', [
+    userid: new FormControl('', [
       Validators.required,
       // Validators.minLength(5),
       // Validators.maxLength(5),
     ]),
-    userpwd: new FormControl('password11', [
+    userpwd: new FormControl('', [
       Validators.required,
       // Validators.minLength(6),
       // Validators.maxLength(6),
