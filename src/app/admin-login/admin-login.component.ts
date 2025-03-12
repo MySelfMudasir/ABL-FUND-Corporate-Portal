@@ -67,6 +67,9 @@ export class AdminLoginComponent {
   onSubmit() {
     if (this.login.valid) {
       console.log('Form data:', this.login.value);
+      const formValues = this.login.value;
+      formValues.adminId = formValues.adminId.trim();
+      formValues.adminPassword = formValues.adminPassword.trim();
       this.loadingAlert('Processing your request...', 'Loading...'); // Pass a message to the loading alert
       this.generateTokenPost();
     } else {

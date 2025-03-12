@@ -154,7 +154,6 @@ export class DashboardComponent {
       (response: any) => {
         console.log('GetCnicPortfolioDetail Response:', response);
         if (response) { 
-          console.clear();
           
           // Initialize formattedData array if it doesn't exist
           this.chartData.data.datasets[0].formattedData = [];
@@ -174,7 +173,7 @@ export class DashboardComponent {
             // Push the formatted amount into formattedData
             this.chartData.data.datasets[0].formattedData.push(formattedAmount);
             // You can also log the raw and formatted amounts
-            console.log(`Raw: ${rawAmount}, Formatted: ${formattedAmount}`);
+            // console.log(`Raw: ${rawAmount}, Formatted: ${formattedAmount}`);
 
             // Add the background color
             this.chartData.data.datasets[0].backgroundColor.push(allocation.fundCategoryColorCode);

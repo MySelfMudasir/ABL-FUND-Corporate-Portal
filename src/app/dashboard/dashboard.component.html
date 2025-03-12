@@ -83,11 +83,12 @@
                                     </div>
                                     <style>
                                         .chartDiv {
-                                            position: relative;
-                                            width: 200px;
-                                            height: 200px;
+                                          position: relative;
+                                          width: 200px;
+                                          height: 200px;
+                                          overflow: visible;  /* Allow overflow of tooltip */
                                         }
-                                    </style>
+                                      </style>                                      
                                     <div class="mt-2 text-center d-flex justify-content-center chartDiv">
                                         <app-chart #chart1 [chartData]="chartData"></app-chart>
                                         <!-- <app-chart *ngIf="chartVisibility else loadingChart" #chart1 [chartData]="chartData"></app-chart>

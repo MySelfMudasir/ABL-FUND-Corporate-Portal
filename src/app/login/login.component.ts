@@ -78,6 +78,10 @@ export class LoginComponent {
   onSubmit() {
     if (this.login.valid) {
       console.log('Form data:', this.login.value);
+      const formValues = this.login.value;
+      formValues.userid = formValues.userid.trim();
+      formValues.userpwd = formValues.userpwd.trim();
+      
       this.loadingAlert('Processing your request...', 'Loading...'); // Pass a message to the loading alert
       this.generateTokenPost();
     } else {
