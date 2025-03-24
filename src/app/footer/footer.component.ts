@@ -9,6 +9,8 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
 
+  copyrightyear: number = new Date().getFullYear();
+
 
 
 }

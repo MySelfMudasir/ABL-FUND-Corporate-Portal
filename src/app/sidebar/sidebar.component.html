@@ -44,7 +44,11 @@
           </div>
         </li> -->
         <li [class.active]="isActive('/reports')">
-          <a href="#" routerLink="/reports"><i class="far fa-file-alt"></i> Reports</a>
+          <a href="#" routerLink="/reports"><i class="far fa-file-alt"></i> Reports and Certificates</a>
+        </li>
+        
+        <li [class.active]="isActive('/miscellaneous-information')">
+          <a href="javascript:void(0)" routerLink="/miscellaneous-information"><i class="far fa-info-circle"></i> Miscellaneous information</a>
         </li>
         <li>
           <a data-bs-toggle="collapse" data-bs-target="#setting-collapse"
@@ -63,10 +67,7 @@
             </ul>
           </div>
         </li>
-        
-        <li [class.active]="isActive('/miscellaneous-information')">
-          <a href="javascript:void(0)" routerLink="/miscellaneous-information"><i class="far fa-info-circle"></i> Miscellaneous information</a>
-        </li>
+
         <li [class.active]="isActive('/logout')">
           <a href="javascript:void(0)" (click)="openModal()"><i class="far fa-sign-out-alt"></i> Logout</a>
         </li>

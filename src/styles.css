@@ -1,2 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
+
+
+/* Apply Helvetica font family to general text elements */
+body, p, h1, h2, h3, h4, h5, h6, span, a, li {
+    font-family: Helvetica !important;
+}
